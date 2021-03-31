@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1> Test</h1>
+<form th:object="${newMessage}" th:action="@{/signIn}" action="#" method="POST">
+    <input th:field="*{text}" type="text">
+    <input type="submit">
+</form>
+
+</body>
+</html>
