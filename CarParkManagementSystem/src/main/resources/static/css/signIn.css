@@ -19,13 +19,16 @@ input[type=text], input[type=password] {
 /* Set a style for all buttons */
 button {
   /*background-color: #4CAF50;*/
-  background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
   border: none;
   cursor: pointer;
   width: 100%;
+}
+#submitbtn
+{
+  background-image: linear-gradient(to right, red,orange,yellow,green,blue,indigo,violet);
 }
 
 /* Add a hover effect for buttons */

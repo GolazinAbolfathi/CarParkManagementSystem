@@ -1,19 +1,14 @@
 package com.example.CarParkManagementSystem.controller;
 
-import com.example.CarParkManagementSystem.dao.DAO;
-import com.example.CarParkManagementSystem.model.Greeting;
 import com.example.CarParkManagementSystem.model.User;
-import com.example.CarParkManagementSystem.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collection;
-
 @Controller
 //@RequestMapping("/users")
 public class Controller_Class {
+
     User user = new User();
 
     @GetMapping("/")
@@ -67,5 +62,7 @@ public class Controller_Class {
 //        temp=user;
 //        return userService.createUser(temp);
 //    }
+
+    //https://spring.io/guides/gs/handling-form-submission/
 
 }
