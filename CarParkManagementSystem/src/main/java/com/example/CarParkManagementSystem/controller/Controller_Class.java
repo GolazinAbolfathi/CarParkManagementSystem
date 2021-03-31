@@ -13,4 +13,6 @@ public class Controller_Class {
 
         return "home";
     }
+    //https://attacomsian.com/blog/spring-boot-thymeleaf-example
+    //https://hellokoding.com/spring-security-login-logout-thymeleaf/
 }

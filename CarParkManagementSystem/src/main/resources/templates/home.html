@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -14,7 +14,7 @@
         <nav id="nav">
             <ul>
                 <li><a href="home.html" class="anchor"> HOME </a></li>
-                <li><a href="signIn.html" class="anchor"> LOGIN IN </a></li>
+                <li><a href="signIn.html" th:href="@{/signIn.html}" class="anchor"> LOGIN IN </a></li>
             </ul>
         </nav>
         <img src="../static/img/parking_lot.jpg" id="logo" height="300" width="500">
