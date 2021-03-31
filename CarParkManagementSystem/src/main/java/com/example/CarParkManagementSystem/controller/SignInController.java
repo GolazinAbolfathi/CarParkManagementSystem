@@ -6,7 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class SignInController {
     @RequestMapping("/signIn")
-    public  String getHomePage(){
+    public  String getHomePage()
+    {
         return "signIn";
+
     }
 }
