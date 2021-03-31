@@ -18,13 +18,13 @@ public class Controller_Class {
 
     @GetMapping("/")
     public String greetingForm(Model model) {
-        model.addAttribute("greeting", user);
+        model.addAttribute("signInTag", user);
         return "signIn";
     }
 
-    @PostMapping("/greeting")
+    @PostMapping("/signInTag")
     public String greetingSubmit(@ModelAttribute User user, Model model) {
-        model.addAttribute("greeting", user);
+        model.addAttribute("signInTag", user);
         return "result";
     }
 //    @RequestMapping("/")

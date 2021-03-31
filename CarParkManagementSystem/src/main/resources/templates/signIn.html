@@ -13,7 +13,7 @@
 
 </p>
 
-<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
+<form action="#" th:action="@{/signInTag}" th:object="${signInTag}" method="post">
     <p>Id: <input type="text" th:field="*{user_id}" /></p>
     <p>First Name: <input type="text" th:field="*{first_name}" /></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
@@ -25,7 +25,7 @@
 <!--    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>-->
 <!--</form>-->
 
-<!--<form th:object="${newMessage}" th:action="@{/signIn}" action="#" method="POST">-->
+<!--<form th:action="@{/greeting}" th:object="${greeting}" action="#" method="post">-->
 
 <!--    <div class="imgcontainer">-->
 <!--        <img src="../static/img/img_avatar.png" alt="Avatar" class="avatar">-->
