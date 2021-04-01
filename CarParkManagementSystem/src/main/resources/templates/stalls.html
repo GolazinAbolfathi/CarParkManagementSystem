@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/stalls.css}" type="text/css">
+</head>
+<body>
+
+    <div id="wrapper1">
+        <h1> Welcome to the Car Park Management System</h1><br>
+        <nav id="nav">
+            <ul>
+                <li><a th:href="@{/}" class="anchor"> HOME </a></li>
+                <li><a th:href="@{/signIn}" class="anchor"> LOGIN IN </a></li>
+                <li><a th:href="@{/stalls}" class="anchor">Availability</a>
+            </ul>
+        </nav>
+        <table>
+        <thead>
+        <td>
+        Stall Number
+        </td>
+        <td>
+        Availability
+        </td>
+        <td>
+        Minutes Remaining
+        </td>
+        </thead>
+		<tr:block th:each="stall : ${stall}">
+    <tr>
+    	<td th:text="${stall.stallId}">Test</td>
+    	</td>
+        <td th:if="${stall.minutesLeft.toString() == '0'}" class = "green">Available</td>
+        <td th:unless="${stall.minutesLeft.toString() == '0'}" class="red">Unavailable</td>
+        <td th:text="${stall.minutesLeft}">
+        </td>
+    </tr>
+		</tr:block>
+    </table>
+    </div>
+
+
+</body>
+</html>
