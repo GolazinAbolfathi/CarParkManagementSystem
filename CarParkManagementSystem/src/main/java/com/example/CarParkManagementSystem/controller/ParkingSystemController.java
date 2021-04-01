@@ -3,13 +3,9 @@ package com.example.CarParkManagementSystem.controller;
 import com.example.CarParkManagementSystem.dao.*;
 import com.example.CarParkManagementSystem.entity.*;
 
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.Date;
 
-public class ParkingSystemController implements IParkingEventHandler {
+public class ParkingSystemController implements IParkingController {
     private final Configuration config;
     IDatabaseManager iDB;
     Calculator calc;

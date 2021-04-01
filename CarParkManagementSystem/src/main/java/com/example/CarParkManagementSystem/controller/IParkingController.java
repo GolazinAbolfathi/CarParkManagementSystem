@@ -2,7 +2,7 @@ package com.example.CarParkManagementSystem.controller;
 
 import com.example.CarParkManagementSystem.entity.*;
 
-public interface IParkingEventHandler {
+public interface IParkingController {
 
     public void parkCar (int stallNum, int plannedExitTime, String plateNum);
 
