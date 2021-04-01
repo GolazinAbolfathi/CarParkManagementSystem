@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/signIn.css}" type="text/css">
+</head>
+<body>
+
+<form th:action="@{/signUpTag}" th:object="${signUpTag}" action="#" method="post">
+
+    <div class="imgcontainer">
+        <h1>Sign up new account</h1>
+        <img src="/img/img_avatar.png" alt="Avatar" class="avatar">
+    </div>
+    <div class="container">
+        <label><b>first_name</b></label>
+        <input type="text" th:field="*{first_name}" placeholder="Enter First Name" name="first_name" required>
+
+        <label><b>last_name</b></label>
+        <input type="text" th:field="*{last_name}" placeholder="Enter Last Name" name="last_name" required>
+
+        <label><b>email</b></label>
+        <input type="text" th:field="*{email}" placeholder="Enter Email" name="email" required>
+
+        <label><b>address</b></label>
+        <input type="text" th:field="*{address}" placeholder="Enter Address" name="address" required>
+
+        <label><b>contact_number</b></label>
+        <input type="text" th:field="*{contact_number}" placeholder="Enter Contact Number" name="contact_number" required>
+
+        <label><b>Username</b></label>
+        <input type="text" th:field="*{user_name}" placeholder="Enter Username" name="uname" required>
+
+        <label><b>Password</b></label>
+        <input type="password" th:field="*{password}" placeholder="Enter Password" name="psw" required>
+
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <button type="submit" class="cancelbtn" id="submission">Sign Up</button>
+        <button type="button" class="cancelbtn">Cancel</button>
+    </div>
+
+</form>
+
+
+</body>
+</html>
