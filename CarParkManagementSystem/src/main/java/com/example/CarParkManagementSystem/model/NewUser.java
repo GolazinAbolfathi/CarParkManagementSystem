@@ -17,6 +17,16 @@ public class NewUser {
     private String address;
     private String contact_number;
     private String password;
+    private String user_name;
+
+    public String getUser_name() {
+        return user_name;
+    }
+
+    public void setUser_name(String user_name) {
+        this.user_name = user_name;
+    }
+
     private int user_type;
 
     public long getUser_id() {
