@@ -14,7 +14,7 @@ public class DAO {
     public Collection<User> getUser(){
         return  repository.findAll();
     }
-    public User createUser(User user){
-        return repository.insert(user);
-    }
+//    public User createUser(User user){
+//        return repository.insert(user);
+//    }
 }
