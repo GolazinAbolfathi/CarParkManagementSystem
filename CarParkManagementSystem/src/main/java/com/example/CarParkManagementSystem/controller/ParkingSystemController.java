@@ -20,38 +20,48 @@ public class ParkingSystemController implements IParkingController {
     }
 
     @Override
-    public void parkCar(int stallNum, int durationOfStay, String plateNum) {
-
+    public ParkingPass parkCar(int lotid, int stallNum, int plannedDuration, String plateNum) {
         Date startTime = calc.getCurrentTime();
         Date exitTime = Date.from(
-            startTime.toInstant().plusSeconds(durationOfStay * 60L * 60)
+            startTime.toInstant().plusSeconds(plannedDuration * 60L * 60)
         );
+        ParkingLot lot = iDB.getParkingLot(lotid);
         ParkingPass pass = new ParkingPass(
             plateNum,
-            iDB.getParkingStall(stallNum),
+            lot.getParkingStall(stallNum),
             startTime,
             exitTime
         );
         iDB.addParkingPass(pass);
+        return pass;
     }
 
     @Override
-    public void createLot() {
+    public ParkingLot createLot() {
 
+        return null;
     }
 
     @Override
-    public void createStall(int lotNum) {
+    public ParkingStall createStall(int lotNum) {
 
+        return null;
     }
 
     @Override
-    public void pay(int passNum, PaymentMethod paymentMethod) {
-
+    public Invoice generateInvoice(int passId) {
+        return null;
     }
 
     @Override
-    public void addUser(String firstName, String lastName, String email, String address, int phoneNum, String password, boolean userType) {
+    public Invoice pay(int passNum, PaymentMethod paymentMethod) {
 
+        return null;
+    }
+
+    @Override
+    public User addUser(String firstName, String lastName, String email, String address, int phoneNum, String password, boolean userType) {
+
+        return null;
     }
 }
