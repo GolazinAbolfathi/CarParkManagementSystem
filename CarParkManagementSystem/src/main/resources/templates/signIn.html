@@ -3,7 +3,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Title</title>
-    <link rel="stylesheet" href="../static/css/signIn.css" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/signIn.css}" type="text/css">
 
 </head>
 <body>
@@ -24,7 +24,7 @@
 
     <div class="imgcontainer">
         <h1>Sign in to your account</h1>
-        <img src="../static/img/img_avatar.png" alt="Avatar" class="avatar">
+        <img th:src="@{/img/img_avatar.png}" alt="Avatar" class="avatar">
     </div>
     <div class="container">
         <label><b>Username</b></label>

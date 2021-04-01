@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
-    <link rel="stylesheet" href="../static/css/home.css" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/home.css}" type="text/css">
 </head>
 <body>
 
@@ -13,11 +13,11 @@
         <h1> Welcome to the Car Park Management System</h1><br>
         <nav id="nav">
             <ul>
-                <li><a href="home.html" class="anchor"> HOME </a></li>
-                <li><a href="signIn.html" th:href="@{/signIn.html}" class="anchor"> LOGIN IN </a></li>
+                <li><a th:href="@{/}" class="anchor"> HOME </a></li>
+                <li><a th:href="@{/signIn}" class="anchor"> LOGIN IN </a></li>
             </ul>
         </nav>
-        <img src="../static/img/parking_lot.jpg" id="logo" height="300" width="500">
+        <img th:src="@{/img/parking_lot.jpg}" id="logo" height="300" width="500">
     </div>
 
 </main>
