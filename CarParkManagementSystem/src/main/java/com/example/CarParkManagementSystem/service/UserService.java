@@ -15,7 +15,5 @@ public class UserService {
     {
         return dao.getUser();
     }
-    public User createUser(User user) {
-        return dao.createUser(user);
-    }
+
 }
