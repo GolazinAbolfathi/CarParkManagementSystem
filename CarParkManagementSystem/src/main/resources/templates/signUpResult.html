@@ -6,13 +6,16 @@
 </head>
 <body>
 <h1>Welcome!</h1>
-<p th:text="'User Name: ' + ${signUpTag.first_name}" />
-<p th:text="'Password: ' + ${signUpTag.last_name}" />
-<p th:text="'Password: ' + ${signUpTag.email}" />
-<p th:text="'Password: ' + ${signUpTag.address}" />
-<p th:text="'Password: ' + ${signUpTag.contact_number}" />
-<p th:text="'Password: ' + ${signUpTag.user_name}" />
-<p th:text="'Password: ' + ${signUpTag.password}" />
+<p th:text="'User Name: ' + ${newUser.first_name}" />
+<p th:text="'Last Name: ' + ${newUser.last_name}" />
+<p th:text="'Email: ' + ${newUser.email}" />
+<p th:text="'Address: ' + ${newUser.address}" />
+<p th:text="'Contact Number: ' + ${newUser.contact_number}" />
+<p th:text="'User name: ' + ${newUser.user_name}" />
+<p th:text="'Password: ' + ${newUser.password}" />
 
+
+
+</form>
 </body>
 </html>

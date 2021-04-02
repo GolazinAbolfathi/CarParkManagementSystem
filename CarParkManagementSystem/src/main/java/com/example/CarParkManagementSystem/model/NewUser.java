@@ -1,6 +1,10 @@
 package com.example.CarParkManagementSystem.model;
 
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
 /**
  *
  * @author Soheila Hoseini - 300311938
@@ -8,7 +12,9 @@ package com.example.CarParkManagementSystem.model;
  *
  */
 //!!!!!!!!!!!!!  add username field
+@Document(collection = "user_table")
 public class NewUser {
+    @Id
 
     private long user_id;
     public String first_name;
@@ -17,8 +23,22 @@ public class NewUser {
     private String address;
     private String contact_number;
     private String password;
+//    @Field()
     private String user_name;
+//
+//    public NewUser(String first_name, String last_name, String email, String address, String contact_number, String password, String user_name) {
+//        this.first_name = first_name;
+//        this.last_name = last_name;
+//        this.email = email;
+//        this.address = address;
+//        this.contact_number = contact_number;
+//        this.password = password;
+//        this.user_name = user_name;
+//    }
 
+    public NewUser(){
+
+    }
     public String getUser_name() {
         return user_name;
     }
