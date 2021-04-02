@@ -36,8 +36,8 @@ public class SignUpController {
     @PostMapping("/signUpTag")
     public String signUpSubmit(@ModelAttribute NewUser newUser,Model model) {
         model.addAttribute("user_table",newUser );
+        newUserRepository.save(newUser);
         return "signUpResult";
     }
-
 
 }
