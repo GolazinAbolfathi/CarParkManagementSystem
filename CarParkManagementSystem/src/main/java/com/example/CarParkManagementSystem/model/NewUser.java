@@ -1,31 +1,32 @@
 package com.example.CarParkManagementSystem.model;
 
 
+import com.example.CarParkManagementSystem.controller.AutoIdGenerator;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import java.util.Random;
+
 /**
- *
  * @author Soheila Hoseini - 300311938
  * This is the user model
- *
  */
 //!!!!!!!!!!!!!  add username field
 @Document(collection = "user_table")
 public class NewUser {
     @Id
-
-    private long user_id;
+    private int user_id;
     public String first_name;
     private String last_name;
     private String email;
     private String address;
     private String contact_number;
     private String password;
-//    @Field()
+    //    @Field()
     private String user_name;
-//
+    private int user_type;
+
 //    public NewUser(String first_name, String last_name, String email, String address, String contact_number, String password, String user_name) {
 //        this.first_name = first_name;
 //        this.last_name = last_name;
@@ -36,9 +37,14 @@ public class NewUser {
 //        this.user_name = user_name;
 //    }
 
-    public NewUser(){
+    public NewUser() {
+//        AutoIdGenerator autoIdGenerator=new AutoIdGenerator();
+//        this.user_id=autoIdGenerator.generateUserId();
 
+//        Random rand = new Random();
+//        this.user_id = 1000 + rand.nextInt(100);
     }
+
     public String getUser_name() {
         return user_name;
     }
@@ -47,13 +53,11 @@ public class NewUser {
         this.user_name = user_name;
     }
 
-    private int user_type;
-
-    public long getUser_id() {
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(long user_id) {
+    public void setUser_id(int user_id) {
         this.user_id = user_id;
     }
 
