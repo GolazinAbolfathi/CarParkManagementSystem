@@ -6,6 +6,9 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.SequenceGenerator;
 import java.util.Random;
 
 /**
@@ -15,7 +18,9 @@ import java.util.Random;
 //!!!!!!!!!!!!!  add username field
 @Document(collection = "user_table")
 public class NewUser {
-    @Id
+//    @Id
+//    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LICENSE_SEQ")
     private int user_id;
     public String first_name;
     private String last_name;
@@ -38,11 +43,6 @@ public class NewUser {
 //    }
 
     public NewUser() {
-//        AutoIdGenerator autoIdGenerator=new AutoIdGenerator();
-//        this.user_id=autoIdGenerator.generateUserId();
-
-//        Random rand = new Random();
-//        this.user_id = 1000 + rand.nextInt(100);
     }
 
     public String getUser_name() {

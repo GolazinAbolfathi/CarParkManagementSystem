@@ -18,6 +18,10 @@ public interface NewUserService {
 
     List < NewUser > getAllUsers();
 
+    List < String > getAllEmails();
+
     NewUser getUserById(int newUserId);
+
+//    NewUser getUserByUserName(String user_name);
 
     }

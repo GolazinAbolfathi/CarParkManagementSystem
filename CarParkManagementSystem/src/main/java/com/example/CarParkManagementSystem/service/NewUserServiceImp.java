@@ -14,6 +14,7 @@ public class NewUserServiceImp implements NewUserService {
 
     @Override
     public NewUser createNewUser(NewUser newUser) {
+
         return newUserRepository.save(newUser);
     }
 
@@ -48,6 +49,16 @@ public class NewUserServiceImp implements NewUserService {
     }
 
     @Override
+    public  List<String > getAllEmails() {
+        List <String> emailList = new ArrayList<String>();
+        List <NewUser> users=this.getAllUsers();
+        for(NewUser newUser : users){
+            emailList.add(newUser.getEmail());
+        }
+        return emailList;
+    }
+
+    @Override
     public NewUser getUserById(int newUserId) {
 
         Optional < NewUser > newUserDb = this.newUserRepository.findById(newUserId);
@@ -68,4 +79,16 @@ public class NewUserServiceImp implements NewUserService {
 //            throw new ResourceNotFoundException("Record not found with id : " + newUserId);
 //        }
     }
+
+//    @Override
+//    public NewUser getUserByUserName(String user_name){
+//        Optional < NewUser > newUserDb = this.newUserRepository.(newUserId);
+//
+////        if (newUserDb.isPresent()) {
+//        return newUserDb.get();
+////        } else {
+////            throw new ResourceNotFoundException("Record not found with id : " + newUserId);
+////        }
+//    }
+
 }
