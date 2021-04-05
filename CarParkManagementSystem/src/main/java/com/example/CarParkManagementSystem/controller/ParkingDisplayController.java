@@ -26,7 +26,10 @@ public class ParkingDisplayController {
     	stallItems.add(new Stall(6,"17:41",0,1));
     	model.addAttribute("stall", stallItems);
     			return "stalls";
+    } 
+    @GetMapping("/reservation")
+    public String reservationPage(Model model, @RequestParam int stall) {
+    	model.addAttribute("number", stall);
+    	return "reservation";
     }
-
-
 }
