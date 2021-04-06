@@ -1,26 +1,26 @@
 package com.example.CarParkManagementSystem.service;
 
-import com.example.CarParkManagementSystem.model.NewUser;
+import com.example.CarParkManagementSystem.entity.User;
 import org.springframework.stereotype.Service;
-import java.util.Map;
+
 import java.util.List;
 
 @Service
 public interface NewUserService {
 
-    NewUser createNewUser(NewUser newUser);
+    User createNewUser(User user);
 
-    List<NewUser> readUser();
+    List<User> readUser();
 
-    NewUser updateUser(NewUser newUser);
+    User updateUser(User user);
 
     void deleteUser(int newUserId);
 
-    List < NewUser > getAllUsers();
+    List <User> getAllUsers();
 
     List < String > getAllEmails();
 
-    NewUser getUserById(int newUserId);
+    User getUserById(int newUserId);
 
 //    NewUser getUserByUserName(String user_name);
 

@@ -1,4 +1,4 @@
-package com.example.CarParkManagementSystem.model;
+package com.example.CarParkManagementSystem.entity;
 
 
 import com.example.CarParkManagementSystem.controller.AutoIdGenerator;
@@ -17,7 +17,7 @@ import java.util.Random;
  */
 //!!!!!!!!!!!!!  add username field
 @Document(collection = "user_table")
-public class NewUser {
+public class User {
 //    @Id
 //    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LICENSE_SEQ")
@@ -42,7 +42,7 @@ public class NewUser {
 //        this.user_name = user_name;
 //    }
 
-    public NewUser() {
+    public User() {
     }
 
     public String getUser_name() {
