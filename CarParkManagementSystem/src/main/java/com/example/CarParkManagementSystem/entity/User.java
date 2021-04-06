@@ -11,10 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.SequenceGenerator;
 import java.util.Random;
 
-/**
- * @author Soheila Hoseini - 300311938
- * This is the user model
- */
 //!!!!!!!!!!!!!  add username field
 @Document(collection = "user_table")
 public class User {

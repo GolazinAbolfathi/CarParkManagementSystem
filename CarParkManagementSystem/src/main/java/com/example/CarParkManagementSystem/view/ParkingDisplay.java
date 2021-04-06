@@ -1,6 +1,7 @@
-package com.example.CarParkManagementSystem.controller;
+package com.example.CarParkManagementSystem.view;
 
-import com.example.CarParkManagementSystem.model.Stall;
+import com.example.CarParkManagementSystem.entity.ParkingLot;
+import com.example.CarParkManagementSystem.entity.ParkingStall;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -13,23 +14,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class ParkingDisplayController {
-	
-	List<Stall> stallItems = new ArrayList<Stall>();
+public class ParkingDisplay {
+
+	private ParkingLot parkingLot = new ParkingLot();
 	
     @RequestMapping("/stalls")
     public String homePage(Model model) {
 
-    	
-    	if(stallItems.isEmpty()) {
-    	stallItems.add(new Stall(1,"11:23",0,1));
-    	stallItems.add(new Stall(2,"11:43",31,1));
-    	stallItems.add(new Stall(3,"11:63",4231,1));
-    	stallItems.add(new Stall(4,"13:23",11,1));
-    	stallItems.add(new Stall(5,"14:22",13,1));
-    	stallItems.add(new Stall(6,"17:41",0,1));
-    	}
-    	//dummy data
+		List<ParkingStall> stallItems = parkingLot.getParkingStalls();
+
+
     	model.addAttribute("stall", stallItems);
     			return "stalls";
     } 
@@ -46,9 +40,9 @@ public class ParkingDisplayController {
     	String[] data = Post.split("&");
     	int Id = Integer.parseInt(data[0].replace("stallId=", ""));
     	int minutes = Integer.parseInt(data[1].replace("minutesLeft=", ""));
-    	Stall tempStall = new Stall(Id, time, minutes, 1);
+    	/*Stall tempStall = new Stall(Id, time, minutes, 1);
     	stallItems.set(Id-1, tempStall);
-    	model.addAttribute("stall",stallItems);
+    	model.addAttribute("stall",stallItems);*/
         return "redirect:stalls";
     }
 }

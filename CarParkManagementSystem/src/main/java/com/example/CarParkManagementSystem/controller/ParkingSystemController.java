@@ -6,17 +6,11 @@ import com.example.CarParkManagementSystem.entity.*;
 import java.util.Date;
 
 public class ParkingSystemController implements IParkingController {
-    private final Configuration config;
     IDatabaseManager iDB;
     Calculator calc;
 
-    public ParkingSystemController(Configuration config) {
+    public ParkingSystemController() {
         iDB = new DatabaseManager();
-        this.config = config;
-        calc = new Calculator(
-            Double.parseDouble(config.get("price")),
-            Double.parseDouble(config.get("overtime"))
-        );
     }
 
     @Override
