@@ -1,5 +1,6 @@
 package com.example.CarParkManagementSystem.entity;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -55,9 +56,25 @@ public class ParkingStall {
         return true;
     }
 
+    public Date getNextExpectedAvailable() {
+        for (ParkingPass pass : passes)
+            if (!pass.isCompleted())
+                return pass.getExpectedExit();
+        return Date.from(Instant.now());
+    }
+
     public ParkingPass parkCar(String plate, Date start, Date end) {
         ParkingPass pass = new ParkingPass(plate, this, start, end);
         passes.add(pass);
         return pass;
+    }
+
+    public ParkingPass parkCar(String plate, Date end) {
+        return parkCar(plate, Date.from(Instant.now()), end);
+    }
+
+    public ParkingPass parkCar(String plate, int hours) {
+        Date end = Date.from(Instant.now().plusSeconds(60 * 60L * hours));
+        return parkCar(plate, Date.from(Instant.now()), end);
     }
 }

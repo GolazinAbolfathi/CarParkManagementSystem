@@ -6,6 +6,7 @@ import com.example.CarParkManagementSystem.entity.ParkingStall;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +23,13 @@ public class ParkingDisplay {
     public String homePage(Model model) {
 
 		List<ParkingStall> stallItems = parkingLot.getParkingStalls();
+		if (stallItems.isEmpty()) {
+			ParkingStall tempStall = new ParkingStall(parkingLot);
+			tempStall.parkCar("12345", 3);
+			stallItems.add(tempStall);
 
+			stallItems.add(new ParkingStall(parkingLot));
+		}
 
     	model.addAttribute("stall", stallItems);
     			return "stalls";
