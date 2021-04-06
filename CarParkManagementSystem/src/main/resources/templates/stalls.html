@@ -13,7 +13,8 @@
             <ul>
                 <li><a th:href="@{/}" class="anchor"> HOME </a></li>
                 <li><a th:href="@{/signIn}" class="anchor"> LOGIN IN </a></li>
-                <li><a th:href="@{/stalls}" class="anchor">Availability</a>
+                <li><a th:href="@{/signUp}" class="anchor"> SIGN UP </a></li>
+                <li><a th:href="@{/stalls}" class="anchor">RESERVATIONS</a>
             </ul>
         </nav>
         <table>
@@ -27,6 +28,9 @@
         <td>
         Minutes Remaining
         </td>
+        <td>
+        Reserve
+        </td>
         </thead>
 		<tr:block th:each="stall : ${stall}">
     <tr>
@@ -36,6 +40,7 @@
         <td th:unless="${stall.minutesLeft.toString() == '0'}" class="red">Unavailable</td>
         <td th:text="${stall.minutesLeft}">
         </td>
+        <td><a th:href="@{/reservation?stall=} + ${stall.stallId}">Reserve</a></td>
     </tr>
 		</tr:block>
     </table>

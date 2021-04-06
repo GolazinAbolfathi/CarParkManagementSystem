@@ -12,6 +12,7 @@ public class Stall {
 		this.minutesLeft = j;
 		this.parkedUnit = k;
 	}
+
 	public int getStallId() {
 		return stallId;
 	}

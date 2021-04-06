@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/stalls.css}" type="text/css">
+</head>
+<body>
+<div id="wrapper1">
+<form th:action="@{/reserveForm}" th:object="${reserveForm}" action="#" method="post">
+
+        <h1>Reserve your spot</h1>
+    <div class="container">
+        <label>Stall ID</label>
+        <input type="text" th:value="${number}" name="stallId" readonly>
+<br>
+        <label><b>How long do you want to park?(in minutes)</b></label>
+        <input type="text" placeholder="Enter Time" name="minutesLeft" required>
+<br>
+    	<input type="hidden" name="parkedUnit" th:value=1>
+    </div>
+
+    <div>
+        <button type="submit" class="cancelbtn" id="submission">Reserve Now</button>
+        <button type="button" class="cancelbtn">Cancel</button>
+    </div>
+
+</form>
+</div>
+
+</body>
+</html>
