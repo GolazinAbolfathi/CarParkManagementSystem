@@ -1,6 +1,6 @@
 package com.example.CarParkManagementSystem.dao;
 
-import com.example.CarParkManagementSystem.model.NewUser;
+import com.example.CarParkManagementSystem.model.User;
 
 public interface IDatabaseManager {
 //    public ParkingPass getParkingPass(int passID);
@@ -11,9 +11,9 @@ public interface IDatabaseManager {
 //
 //    public Invoice getInvoice(int invoiceID);
 
-    public NewUser getUser(int user_id);
+    public User getUser(int user_id);
 
-    public void createUser(NewUser newUser);
+    public void createUser(User user);
 
 //    public void addParkingPass(ParkingPass pass);
 //

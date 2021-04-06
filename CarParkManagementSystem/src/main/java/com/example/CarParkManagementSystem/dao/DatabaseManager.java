@@ -1,6 +1,6 @@
 package com.example.CarParkManagementSystem.dao;
 
-import com.example.CarParkManagementSystem.model.NewUser;
+import com.example.CarParkManagementSystem.model.User;
 
 public class DatabaseManager implements IDatabaseManager{
 //    @Override
@@ -24,12 +24,12 @@ public class DatabaseManager implements IDatabaseManager{
 //    }
 
     @Override
-    public NewUser getUser(int user_id) {
+    public User getUser(int user_id) {
         return null;
     }
 
     @Override
-    public void createUser(NewUser newUser){
+    public void createUser(User user){
     }
 
 

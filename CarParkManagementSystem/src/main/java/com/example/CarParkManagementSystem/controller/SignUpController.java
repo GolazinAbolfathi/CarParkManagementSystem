@@ -1,8 +1,8 @@
 package com.example.CarParkManagementSystem.controller;
 
-import com.example.CarParkManagementSystem.dao.NewUserRepository;
-import com.example.CarParkManagementSystem.model.NewUser;
-import com.example.CarParkManagementSystem.service.NewUserService;
+import com.example.CarParkManagementSystem.dao.UserRepository;
+import com.example.CarParkManagementSystem.model.User;
+import com.example.CarParkManagementSystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.http.HttpStatus;
@@ -11,36 +11,34 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Random;
 
 @Controller
 @Document(collection = "user_table")
 public class SignUpController {
-    public NewUser newUser;
+    public User user;
     public AutoIdGenerator autoIdGenerator;
 
     @Autowired
-    private NewUserRepository newUserRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    private NewUserService newUserService;
+    private UserService userService;
 
     @GetMapping("/signUp")
     public String signUpForm(Model model) {
-        newUser=new NewUser();
-        model.addAttribute("signUpTag", newUser);
+        user =new User();
+        model.addAttribute("signUpTag", user);
         return "signUp";
     }
 
     @PostMapping("/signUpTag")
-//    public ResponseEntity  createNewUser(@ModelAttribute NewUser newUser,Model model) {
-        public String  createNewUser(@ModelAttribute NewUser newUser,Model model) {
+//    public ResponseEntity  createNewUser(@ModelAttribute User user,Model model) {
+        public String  createNewUser(@ModelAttribute User user, Model model) {
 
-        List<String> emailList = newUserService.getAllEmails();
+        List<String> emailList = userService.getAllEmails();
 
-        String compareEmail = newUser.getEmail();
+        String compareEmail = user.getEmail();
         if (emailList.contains(compareEmail)) {
             String failureMessage = "Already has the email address: " + compareEmail;
             model.addAttribute("failureMessage", failureMessage);
@@ -48,42 +46,42 @@ public class SignUpController {
         } else {
             String successMessage = "Successfully Sign Up";
             model.addAttribute("successMessage", successMessage);
-            newUser.setUser_id(AutoIdGenerator.generateUserId(newUser));
-            newUserService.createNewUser(newUser);
+            user.setUser_id(AutoIdGenerator.generateUserId(user));
+            userService.createNewUser(user);
         }
 
-        model.addAttribute("user_table",newUser );
-//        ResponseEntity.ok().body(this.newUserService.createNewUser(newUser));
+        model.addAttribute("user_table", user);
+//        ResponseEntity.ok().body(this.userService.createNewUser(user));
         return "signUpResult";
 
-        //        return ResponseEntity.ok().body(this.newUserService.createNewUser(newUser));
+        //        return ResponseEntity.ok().body(this.userService.createNewUser(user));
 
     }
 
     @PutMapping("/user_table/{id}")
-    public ResponseEntity < NewUser > updateProduct(@PathVariable int id, @RequestBody NewUser newUser) {
-        newUser.setUser_id(id);
-        return ResponseEntity.ok().body(this.newUserService.updateUser(newUser));
+    public ResponseEntity <User> updateProduct(@PathVariable int id, @RequestBody User user) {
+        user.setUser_id(id);
+        return ResponseEntity.ok().body(this.userService.updateUser(user));
     }
 
     @DeleteMapping("/user_table/{id}")
     public HttpStatus deleteUser(@PathVariable int id) {
-        this.newUserService.deleteUser(id);
+        this.userService.deleteUser(id);
         return HttpStatus.OK;
     }
 
     @GetMapping("/user_table")
-    public ResponseEntity < List < NewUser >> getAllUsers() {
-        return ResponseEntity.ok().body(newUserService.getAllUsers());
+    public ResponseEntity < List <User>> getAllUsers() {
+        return ResponseEntity.ok().body(userService.getAllUsers());
     }
 
     @GetMapping("/user_table/{id}")
-    public ResponseEntity < NewUser > getUserById(@PathVariable int id) {
-        return ResponseEntity.ok().body(newUserService.getUserById(id));
+    public ResponseEntity <User> getUserById(@PathVariable int id) {
+        return ResponseEntity.ok().body(userService.getUserById(id));
     }
 
 //    @GetMapping("/user_table/{id}")
-//    public ResponseEntity < NewUser > getUserByUserName(@PathVariable String user_name) {
-//        return ResponseEntity.ok().body(newUserService.getUserByUserName(user_name));
+//    public ResponseEntity < User > getUserByUserName(@PathVariable String user_name) {
+//        return ResponseEntity.ok().body(userService.getUserByUserName(user_name));
 //    }
 }

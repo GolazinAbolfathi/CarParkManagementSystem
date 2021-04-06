@@ -1,27 +1,26 @@
 package com.example.CarParkManagementSystem.controller;
 
-import com.example.CarParkManagementSystem.model.User;
+import com.example.CarParkManagementSystem.model.signInUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class SignInController {
 
-    User user = new User();
+    signInUser signInUser = new signInUser();
 
     @GetMapping("/signIn")
     public String greetingForm(Model model) {
-        model.addAttribute("signInTag", user);
+        model.addAttribute("signInTag", signInUser);
         return "signIn";
     }
 
     @PostMapping("/signInTag")
-    public String greetingSubmit(@ModelAttribute User user, Model model) {
-        model.addAttribute("signInTag", user);
+    public String greetingSubmit(@ModelAttribute signInUser signInUser, Model model) {
+        model.addAttribute("signInTag", signInUser);
         return "result";
     }
 
@@ -30,7 +29,7 @@ public class SignInController {
 //    private UserService userService;
 
     //    @GetMapping
-//    public Collection<User> getUser()
+//    public Collection<signInUser> getUser()
 //    {
 //        return userService.getUser();
 //    }
@@ -38,9 +37,9 @@ public class SignInController {
 
 
 //    @PostMapping()
-//    public User postUser(@RequestBody User temp)
+//    public signInUser postUser(@RequestBody signInUser temp)
 //    {
-//        temp=user;
+//        temp=signInUser;
 //        return userService.createUser(temp);
 //    }
 
