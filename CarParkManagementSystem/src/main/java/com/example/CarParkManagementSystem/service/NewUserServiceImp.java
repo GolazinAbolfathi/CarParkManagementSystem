@@ -31,7 +31,6 @@ public class NewUserServiceImp implements NewUserService {
 //        if (newUserDb.isPresent()) {
             User userUpdate = newUserDb.get();
             userUpdate.setUserId(user.getUserId());
-            userUpdate.setUser_name(user.getUser_name());
             userUpdate.setLast_name(user.getLast_name());
             userUpdate.setAddress(user.getAddress());
             userUpdate.setContact_number(user.getContact_number());

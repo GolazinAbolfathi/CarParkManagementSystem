@@ -50,8 +50,8 @@ public class ParkingPass {
         return invoice;
     }
 
-    public Invoice generateInvoice(Date exitTime) {
-        invoice = new Invoice(this, exitTime);
+    public Invoice generateInvoice(Date exitTime, double cost) {
+        invoice = new Invoice(this, exitTime, cost);
         return invoice;
     }
 }

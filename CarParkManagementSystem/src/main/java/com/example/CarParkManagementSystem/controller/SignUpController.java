@@ -17,7 +17,6 @@ import java.util.List;
 @Document(collection = "user_table")
 public class SignUpController {
     public User user;
-    public AutoIdGenerator autoIdGenerator;
 
     @Autowired
     private NewUserRepository newUserRepository;
@@ -46,7 +45,7 @@ public class SignUpController {
         } else {
             String successMessage = "Successfully Sign Up";
             model.addAttribute("successMessage", successMessage);
-            user.setUserId(AutoIdGenerator.generateUserId(user));
+            user.setNextId();
             newUserService.createNewUser(user);
         }
 

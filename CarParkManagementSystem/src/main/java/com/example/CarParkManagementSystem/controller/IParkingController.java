@@ -58,9 +58,9 @@ public interface IParkingController {
                 String lastName,
                 String email,
                 String address,
-                int phoneNum,
+                String phoneNum,
                 String password,
-                boolean userType);
+                int userType);
 
     /**
      * Gets a list of all stalls available to the controller

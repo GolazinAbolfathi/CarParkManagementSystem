@@ -1,19 +1,15 @@
 package com.example.CarParkManagementSystem.entity;
 
 
-import com.example.CarParkManagementSystem.controller.AutoIdGenerator;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.SequenceGenerator;
-import java.util.Random;
 
 //!!!!!!!!!!!!!  add username field
 @Document(collection = "user_table")
 public class User {
+    private static int nextId = 0;
 //    @Id
 //    @GeneratedValue(strategy= GenerationType.IDENTITY)
     @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LICENSE_SEQ")
@@ -24,34 +20,34 @@ public class User {
     private String address;
     private String contact_number;
     private String password;
-    //    @Field()
-    private String user_name;
-    private int user_type;
+    private int userType;
 
-    public User(String name, String password)
-    {
-        this.first_name = name;
+    public User(
+            String first_name,
+            String last_name,
+            String email,
+            String address,
+            String contact_number,
+            String password,
+            int userType) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.address = address;
+        this.contact_number = contact_number;
         this.password = password;
+        this.userType = userType;
     }
-//    public NewUser(String first_name, String last_name, String email, String address, String contact_number, String password, String user_name) {
-//        this.first_name = first_name;
-//        this.last_name = last_name;
-//        this.email = email;
-//        this.address = address;
-//        this.contact_number = contact_number;
-//        this.password = password;
-//        this.user_name = user_name;
-//    }
 
     public User() {
     }
 
-    public String getUser_name() {
-        return user_name;
+    public int getUserType() {
+        return userType;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUserType(int userType) {
+        this.userType = userType;
     }
 
     public int getUserId() {
@@ -60,6 +56,9 @@ public class User {
 
     public void setUserId(int user_id) {
         this.user_id = user_id;
+    }
+    public void setNextId() {
+        user_id = nextId++;
     }
 
     public String getFirst_name() {
@@ -108,13 +107,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getUser_type() {
-        return user_type;
-    }
-
-    public void setUser_type(int user_type) {
-        this.user_type = user_type;
     }
 }

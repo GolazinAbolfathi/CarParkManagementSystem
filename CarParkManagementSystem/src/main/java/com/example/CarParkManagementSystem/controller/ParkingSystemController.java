@@ -3,6 +3,7 @@ package com.example.CarParkManagementSystem.controller;
 import com.example.CarParkManagementSystem.dao.*;
 import com.example.CarParkManagementSystem.entity.*;
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -35,31 +36,57 @@ public class ParkingSystemController implements IParkingController {
 
     @Override
     public ParkingLot createLot() {
-
-        return null;
+        ParkingLot lot = new ParkingLot();
+        iDB.addParkingLot(lot);
+        return lot;
     }
 
     @Override
     public ParkingStall createStall(int lotNum) {
-
-        return null;
+        return iDB.getParkingLot(lotNum).addParkingStall();
     }
 
     @Override
     public Invoice generateInvoice(int passId) {
-        return null;
+        ParkingPass pass = iDB.getParkingPass(passId);
+        Invoice i = null;
+        if (pass != null)
+            i = pass.generateInvoice(
+                    calc.getCurrentTime(),
+                    calc.calculateCost(pass)
+            );
+        return i;
     }
 
     @Override
-    public Invoice pay(int passNum, PaymentMethod paymentMethod) {
-
-        return null;
+    public Invoice pay(int passId, PaymentMethod paymentMethod) {
+        ParkingPass pass = iDB.getParkingPass(passId);
+        Invoice iv = pass.getInvoice();
+        iv.getCost(); // Don't do anything with the cost rn lmao xD
+        // -- Charge the cash money here --
+        iv.pay(paymentMethod);
+        return iv;
     }
 
     @Override
-    public User addUser(String firstName, String lastName, String email, String address, int phoneNum, String password, boolean userType) {
-
-        return null;
+    public User addUser(
+            String firstName,
+            String lastName,
+            String email,
+            String address,
+            String phoneNum,
+            String password,
+            int userType) {
+        User u = new User(
+                firstName,
+                lastName,
+                email,
+                address,
+                phoneNum,
+                password,
+                userType);
+        iDB.createUser(u);
+        return u;
     }
 
     @Override
