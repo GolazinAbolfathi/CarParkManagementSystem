@@ -1,4 +1,4 @@
-package com.example.CarParkManagementSystem.controller;
+package com.example.CarParkManagementSystem.view;
 
 import com.example.CarParkManagementSystem.entity.User;
 import org.springframework.stereotype.Controller;
