@@ -19,28 +19,34 @@
         </nav>
         <table>
         <thead>
-        <td>
+        <th>
         Stall Number
-        </td>
-        <td>
+        </th>
+        <th>
         Availability
-        </td>
-        <td>
-        Minutes Remaining
-        </td>
+        </th>
+        <th>
+        Reserved Until
+        </th><!--
         <td>
         Reserve
-        </td>
+        </td>-->
         </thead>
 		<tr:block th:each="stall : ${stall}">
     <tr>
-    	<td th:text="${stall.stallId}">Test</td>
-    	</td>
-        <td th:if="${stall.minutesLeft.toString() == '0'}" class = "green">Available</td>
-        <td th:unless="${stall.minutesLeft.toString() == '0'}" class="red">Unavailable</td>
-        <td th:text="${stall.minutesLeft}">
-        </td>
-        <td><a th:href="@{/reservation?stall=} + ${stall.stallId}">Reserve</a></td>
+    	<td th:text="${stall.stallNumber}"></td>
+        <td:block th:if="${stall.isAvailable()}">
+            <td class="green">Available</td>
+            <td style="padding: 0.5ex;">
+                <a th:href="@{/reservation?stall=} + ${stall.stallNumber}">Reserve</a>
+            </td>
+        </td:block>
+        <td:block th:unless="${stall.isAvailable()}">
+            <td class="red">Unavailable</td>
+            <td style="padding: 0.5ex;"
+                th:text="${stall.getNextExpectedAvailable().toString()}">
+            </td>
+        </td:block>
     </tr>
 		</tr:block>
     </table>

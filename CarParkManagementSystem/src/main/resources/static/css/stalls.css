@@ -34,6 +34,7 @@ body,html
 table{
 	margin-left:10%;
 	margin-right:10%;
+    width: 80%;
 }
 .anchor:hover{
    background-color: blue;
@@ -55,7 +56,6 @@ nav ul li
 }
 table, th, td{
 	border:solid 2px black;
-	width:80%;
 }
 .green{
 	color:white;

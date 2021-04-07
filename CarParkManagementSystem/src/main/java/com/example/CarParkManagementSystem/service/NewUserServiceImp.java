@@ -26,12 +26,11 @@ public class NewUserServiceImp implements NewUserService {
 
     @Override
     public User updateUser(User user) {
-        Optional<User> newUserDb = this.newUserRepository.findById(user.getUser_id());
+        Optional<User> newUserDb = this.newUserRepository.findById(user.getUserId());
 
 //        if (newUserDb.isPresent()) {
             User userUpdate = newUserDb.get();
-            userUpdate.setUser_id(user.getUser_id());
-            userUpdate.setUser_name(user.getUser_name());
+            userUpdate.setUserId(user.getUserId());
             userUpdate.setLast_name(user.getLast_name());
             userUpdate.setAddress(user.getAddress());
             userUpdate.setContact_number(user.getContact_number());

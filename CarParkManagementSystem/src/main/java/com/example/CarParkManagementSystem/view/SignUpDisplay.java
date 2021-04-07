@@ -1,4 +1,4 @@
-package com.example.CarParkManagementSystem.controller;
+package com.example.CarParkManagementSystem.view;
 
 import com.example.CarParkManagementSystem.dao.NewUserRepository;
 import com.example.CarParkManagementSystem.entity.User;
@@ -15,9 +15,8 @@ import java.util.List;
 
 @Controller
 @Document(collection = "user_table")
-public class SignUpController {
+public class SignUpDisplay {
     public User user;
-    public AutoIdGenerator autoIdGenerator;
 
     @Autowired
     private NewUserRepository newUserRepository;
@@ -27,8 +26,7 @@ public class SignUpController {
 
     @GetMapping("/signUp")
     public String signUpForm(Model model) {
-        user =new User();
-        model.addAttribute("signUpTag", user);
+        model.addAttribute("signUpTag", new User());
         return "signUp";
     }
 
@@ -46,7 +44,7 @@ public class SignUpController {
         } else {
             String successMessage = "Successfully Sign Up";
             model.addAttribute("successMessage", successMessage);
-            user.setUser_id(AutoIdGenerator.generateUserId(user));
+            user.setNextId();
             newUserService.createNewUser(user);
         }
 
@@ -60,7 +58,7 @@ public class SignUpController {
 
     @PutMapping("/user_table/{id}")
     public ResponseEntity <User> updateProduct(@PathVariable int id, @RequestBody User user) {
-        user.setUser_id(id);
+        user.setUserId(id);
         return ResponseEntity.ok().body(this.newUserService.updateUser(user));
     }
 
