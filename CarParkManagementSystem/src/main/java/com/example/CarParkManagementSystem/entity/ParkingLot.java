@@ -10,12 +10,11 @@ public class ParkingLot {
     private static int nextId = 0;
     private final int lotId;
     private final List<ParkingStall> stalls;
-    private Calculator calculator;
 
-    public ParkingLot() {
-        lotId = nextId++;
+    public ParkingLot() { this(nextId++); }
+    public ParkingLot(int lotId) {
+        this.lotId = lotId;
         stalls = new ArrayList<>();
-        calculator = new Calculator();
     }
 
     public int getLotId() {
@@ -63,9 +62,5 @@ public class ParkingLot {
         ParkingStall stall = new ParkingStall(this);
         stalls.add(stall);
         return stall;
-    }
-
-    public Calculator getCalculator() {
-        return calculator;
     }
 }

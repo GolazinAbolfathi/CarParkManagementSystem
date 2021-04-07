@@ -9,10 +9,12 @@ public class Invoice {
     private final Date leavingTime;
     private PaymentMethod method;
     private boolean paid;
+    private final double cost;
 
-    public Invoice (ParkingPass pass, Date leavingTime) {
+    public Invoice (ParkingPass pass, Date leavingTime, double cost) {
         this.pass = pass;
         this.leavingTime = leavingTime;
+        this.cost = cost;
     }
 
     public ParkingPass getPass() {
@@ -23,20 +25,20 @@ public class Invoice {
         return method;
     }
 
+    public Date getLeavingTime() {
+        return leavingTime;
+    }
+
     public boolean isPaid() {
         return paid;
     }
 
     public double getCost() {
-        Calculator calc = pass.getParkingStall().getParkingLot().getCalculator();
-        int hoursModifier = 1000 * 60 * 60;
-        long regular = pass.getExpectedExit().getTime() - pass.getEntryTime().getTime();
-        regular /= hoursModifier;
-        long overtime = 0;
-        if (leavingTime.after(pass.getExpectedExit())) {
-            overtime = leavingTime.getTime() - pass.getExpectedExit().getTime();
-            overtime /= hoursModifier;
-        }
-        return calc.calculateCost((int)regular, (int)overtime);
+        return cost;
+    }
+
+    public void pay(PaymentMethod method) {
+        this.method = method;
+        this.paid = true;
     }
 }
