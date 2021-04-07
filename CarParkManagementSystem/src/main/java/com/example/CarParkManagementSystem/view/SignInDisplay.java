@@ -26,13 +26,13 @@ public class SignInDisplay {
         IParkingController iParkingController=new ParkingSystemController();
         User tempUser=iParkingController.getUser(user.getUsername(),user.getPassword());
 
-        if (tempUser==null)
+        if (tempUser.getUsername()=="")
         {
             model.addAttribute("signUpTag", user);
             return "signUp";
         }
         else
-            return "reservation";
+            return "logInHome";
 
 //        model.addAttribute("signInTag", tempUser);
 //        return "signInResult";
