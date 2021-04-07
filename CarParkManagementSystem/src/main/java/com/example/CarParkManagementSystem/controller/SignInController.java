@@ -25,22 +25,5 @@ public class SignInController {
     }
 
 
-//    @Autowired
-//    private UserService userService;
-
-    //    @GetMapping
-//    public Collection<User> getUser()
-//    {
-//        return userService.getUser();
-//    }
-
-
-
-//    @PostMapping()
-//    public User postUser(@RequestBody User temp)
-//    {
-//        temp=user;
-//        return userService.createUser(temp);
-//    }
 
 }
