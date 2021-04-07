@@ -34,10 +34,10 @@
         </thead>
 		<tr:block th:each="stall : ${stall}">
     <tr>
-    	<td th:text="${stall.stallNumber}">Test</td>
+    	<td th:text="${stall.stallNumber}"></td>
         <td:block th:if="${stall.isAvailable()}">
             <td class="green">Available</td>
-            <td style="padding: 1ex;">
+            <td style="padding: 0.5ex;">
                 <a th:href="@{/reservation?stall=} + ${stall.stallNumber}">Reserve</a>
             </td>
         </td:block>

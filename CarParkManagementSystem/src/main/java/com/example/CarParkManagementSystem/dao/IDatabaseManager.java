@@ -3,23 +3,27 @@ package com.example.CarParkManagementSystem.dao;
 import com.example.CarParkManagementSystem.entity.User;
 import com.example.CarParkManagementSystem.entity.*;
 
+import java.util.List;
+
 public interface IDatabaseManager {
 
-    public User getUser(int userID);
+    User getUser(int userID);
 
-    public void createUser(User user);
+    void createUser(User user);
     
-    public ParkingPass getParkingPass(int passID);
+    ParkingPass getParkingPass(int passID);
 
-    public ParkingLot getParkingLot(int parkingLotID);
+    ParkingLot getParkingLot(int parkingLotID);
 
-    public Invoice getInvoice(int invoiceID);
+    List<ParkingLot> getParkingLots();
 
-    public void addParkingPass(ParkingPass pass);
+    Invoice getInvoice(int invoiceID);
 
-    public void addParkingStall(ParkingStall stall);
+    void addParkingPass(ParkingPass pass);
 
-    public void addParkingLot(ParkingLot lot);
+    void addParkingStall(ParkingStall stall);
 
-    public void addInvoice(Invoice invoice);
+    void addParkingLot(ParkingLot lot);
+
+    void addInvoice(Invoice invoice);
 }

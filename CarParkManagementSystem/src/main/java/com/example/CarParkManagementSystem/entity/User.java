@@ -28,6 +28,11 @@ public class User {
     private String user_name;
     private int user_type;
 
+    public User(String name, String password)
+    {
+        this.first_name = name;
+        this.password = password;
+    }
 //    public NewUser(String first_name, String last_name, String email, String address, String contact_number, String password, String user_name) {
 //        this.first_name = first_name;
 //        this.last_name = last_name;

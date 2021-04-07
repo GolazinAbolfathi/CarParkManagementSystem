@@ -1,5 +1,7 @@
 package com.example.CarParkManagementSystem.view;
 
+import com.example.CarParkManagementSystem.controller.IParkingController;
+import com.example.CarParkManagementSystem.controller.ParkingSystemController;
 import com.example.CarParkManagementSystem.entity.ParkingLot;
 import com.example.CarParkManagementSystem.entity.ParkingStall;
 
@@ -9,6 +11,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,18 +21,18 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class ParkingDisplay {
 
-	private ParkingLot parkingLot = new ParkingLot();
+	private IParkingController controller;
 	
     @RequestMapping("/stalls")
     public String homePage(Model model) {
-
-		List<ParkingStall> stallItems = parkingLot.getParkingStalls();
+    	controller = new ParkingSystemController();
+		List<ParkingStall> stallItems = controller.getStallList();
 		if (stallItems.isEmpty()) {
-			ParkingStall tempStall = new ParkingStall(parkingLot);
-			tempStall.parkCar("12345", 3);
-			stallItems.add(tempStall);
-
-			stallItems.add(new ParkingStall(parkingLot));
+			ParkingLot temp = new ParkingLot();
+			ParkingStall s = temp.addParkingStall();
+			s.parkCar("12345", 3);
+			stallItems.add(s);
+			stallItems.add(temp.addParkingStall());
 		}
 
     	model.addAttribute("stall", stallItems);

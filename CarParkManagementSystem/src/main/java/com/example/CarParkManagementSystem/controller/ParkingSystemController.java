@@ -3,14 +3,17 @@ package com.example.CarParkManagementSystem.controller;
 import com.example.CarParkManagementSystem.dao.*;
 import com.example.CarParkManagementSystem.entity.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ParkingSystemController implements IParkingController {
     IDatabaseManager iDB;
     Calculator calc;
 
     public ParkingSystemController() {
-        iDB = new DatabaseManager();
+        calc = new Calculator();
+        iDB = new TempDatabaseManager();
     }
 
     @Override
@@ -57,5 +60,14 @@ public class ParkingSystemController implements IParkingController {
     public User addUser(String firstName, String lastName, String email, String address, int phoneNum, String password, boolean userType) {
 
         return null;
+    }
+
+    @Override
+    public List<ParkingStall> getStallList() {
+        var lots = iDB.getParkingLots();
+        ArrayList<ParkingStall> stalls = new ArrayList<>();
+        for (var l : lots)
+            stalls.addAll(l.getParkingStalls());
+        return stalls;
     }
 }

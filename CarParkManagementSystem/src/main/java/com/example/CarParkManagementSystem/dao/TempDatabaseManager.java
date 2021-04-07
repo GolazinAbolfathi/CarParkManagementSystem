@@ -3,11 +3,22 @@ package com.example.CarParkManagementSystem.dao;
 import com.example.CarParkManagementSystem.entity.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class TempDbManager implements IDatabaseManager {
+public class TempDatabaseManager implements IDatabaseManager {
     private final ArrayList<ParkingLot> lots = new ArrayList<>();
     private final ArrayList<User> users = new ArrayList<>();
 
+    public TempDatabaseManager()
+    {
+        User user = new User("Bob", "password");
+        ParkingLot lot = new ParkingLot();
+        lot.addParkingStall().parkCar("123456", 5);
+        lot.addParkingStall().parkCar("EWA 705", 2);
+        lot.addParkingStall();
+        addParkingLot(lot);
+        createUser(user);
+    }
     @Override
     public User getUser(int userID) {
         for (User u : users)
@@ -19,7 +30,8 @@ public class TempDbManager implements IDatabaseManager {
     @Override
     public void createUser(User user) {
         // Make sure the user id doesn't conflict
-        user.setUserId(users.get(users.size() - 1).getUserId() + 1);
+        if (users.size() > 0)
+            user.setUserId(users.get(users.size() - 1).getUserId() + 1);
         users.add(user);
     }
 
@@ -40,6 +52,11 @@ public class TempDbManager implements IDatabaseManager {
             if (lot.getLotId() == parkingLotID)
                 return lot;
         return null;
+    }
+
+    @Override
+    public List<ParkingLot> getParkingLots() {
+        return lots;
     }
 
     @Override
