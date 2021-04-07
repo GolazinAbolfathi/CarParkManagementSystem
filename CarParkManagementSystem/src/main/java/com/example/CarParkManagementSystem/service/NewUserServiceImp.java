@@ -30,7 +30,7 @@ public class NewUserServiceImp implements NewUserService {
 
 //        if (newUserDb.isPresent()) {
             User userUpdate = newUserDb.get();
-            userUpdate.setUser_id(user.getUser_id());
+//            userUpdate.setUser_id(user.getUser_id());
             userUpdate.setUser_name(user.getUser_name());
             userUpdate.setLast_name(user.getLast_name());
             userUpdate.setAddress(user.getAddress());
@@ -59,7 +59,7 @@ public class NewUserServiceImp implements NewUserService {
     }
 
     @Override
-    public User getUserById(int newUserId) {
+    public User getUserById(Long newUserId) {
 
         Optional <User> newUserDb = this.newUserRepository.findById(newUserId);
 
@@ -70,7 +70,7 @@ public class NewUserServiceImp implements NewUserService {
 //        }
     }
     @Override
-    public void deleteUser(int newUserId) {
+    public void deleteUser(Long newUserId) {
         Optional <User> newUserDb = this.newUserRepository.findById(newUserId);
 
 //        if (productDb.isPresent()) {

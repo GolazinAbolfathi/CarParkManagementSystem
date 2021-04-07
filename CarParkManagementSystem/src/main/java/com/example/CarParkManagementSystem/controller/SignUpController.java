@@ -16,6 +16,7 @@ import java.util.List;
 @Controller
 @Document(collection = "user_table")
 public class SignUpController {
+    public User tempUser;
     public User user;
     public AutoIdGenerator autoIdGenerator;
 
@@ -27,8 +28,9 @@ public class SignUpController {
 
     @GetMapping("/signUp")
     public String signUpForm(Model model) {
-        user =new User();
-        model.addAttribute("signUpTag", user);
+        tempUser =new User();
+        model.addAttribute("signUpTag", tempUser);
+        user=new User(tempUser.getFirst_name(),tempUser.getLast_name(),tempUser.getEmail(),tempUser.getAddress(),tempUser.getContact_number(),tempUser.getPassword(),tempUser.getUser_name(),tempUser.getUser_type());
         return "signUp";
     }
 
@@ -46,7 +48,7 @@ public class SignUpController {
         } else {
             String successMessage = "Successfully Sign Up";
             model.addAttribute("successMessage", successMessage);
-            user.setUser_id(AutoIdGenerator.generateUserId(user));
+//            user.setUser_id(AutoIdGenerator.generateUserId(user));
             newUserService.createNewUser(user);
         }
 
@@ -59,13 +61,13 @@ public class SignUpController {
     }
 
     @PutMapping("/user_table/{id}")
-    public ResponseEntity <User> updateProduct(@PathVariable int id, @RequestBody User user) {
+    public ResponseEntity <User> updateProduct(@PathVariable Long id, @RequestBody User user) {
         user.setUser_id(id);
         return ResponseEntity.ok().body(this.newUserService.updateUser(user));
     }
 
     @DeleteMapping("/user_table/{id}")
-    public HttpStatus deleteUser(@PathVariable int id) {
+    public HttpStatus deleteUser(@PathVariable Long id) {
         this.newUserService.deleteUser(id);
         return HttpStatus.OK;
     }
@@ -76,7 +78,7 @@ public class SignUpController {
     }
 
     @GetMapping("/user_table/{id}")
-    public ResponseEntity <User> getUserById(@PathVariable int id) {
+    public ResponseEntity <User> getUserById(@PathVariable Long id) {
         return ResponseEntity.ok().body(newUserService.getUserById(id));
     }
 

@@ -18,10 +18,11 @@ import java.util.Random;
 //!!!!!!!!!!!!!  add username field
 @Document(collection = "user_table")
 public class User {
-//    @Id
+    @Id
 //    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LICENSE_SEQ")
-    private int user_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LICENSE_SEQ")
+    private Long user_id;
     public String first_name;
     private String last_name;
     private String email;
@@ -32,15 +33,17 @@ public class User {
     private String user_name;
     private int user_type;
 
-//    public NewUser(String first_name, String last_name, String email, String address, String contact_number, String password, String user_name) {
-//        this.first_name = first_name;
-//        this.last_name = last_name;
-//        this.email = email;
-//        this.address = address;
-//        this.contact_number = contact_number;
-//        this.password = password;
-//        this.user_name = user_name;
-//    }
+
+    public User(String first_name, String last_name, String email, String address, String contact_number, String password, String user_name, int user_type) {
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email = email;
+        this.address = address;
+        this.contact_number = contact_number;
+        this.password = password;
+        this.user_name = user_name;
+        this.user_type = user_type;
+    }
 
     public User() {
     }
@@ -53,11 +56,11 @@ public class User {
         this.user_name = user_name;
     }
 
-    public int getUser_id() {
+    public Long getUser_id() {
         return user_id;
     }
 
-    public void setUser_id(int user_id) {
+    public void setUser_id(Long user_id) {
         this.user_id = user_id;
     }
 
@@ -116,4 +119,5 @@ public class User {
     public void setUser_type(int user_type) {
         this.user_type = user_type;
     }
+
 }

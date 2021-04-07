@@ -14,13 +14,13 @@ public interface NewUserService {
 
     User updateUser(User user);
 
-    void deleteUser(int newUserId);
+    void deleteUser(Long newUserId);
 
     List <User> getAllUsers();
 
     List < String > getAllEmails();
 
-    User getUserById(int newUserId);
+    User getUserById(Long newUserId);
 
 //    NewUser getUserByUserName(String user_name);
 
