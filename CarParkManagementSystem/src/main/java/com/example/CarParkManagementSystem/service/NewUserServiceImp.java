@@ -1,7 +1,7 @@
 package com.example.CarParkManagementSystem.service;
 
 import com.example.CarParkManagementSystem.dao.NewUserRepository;
-import com.example.CarParkManagementSystem.model.NewUser;
+import com.example.CarParkManagementSystem.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
@@ -13,30 +13,30 @@ public class NewUserServiceImp implements NewUserService {
     private NewUserRepository newUserRepository;
 
     @Override
-    public NewUser createNewUser(NewUser newUser) {
+    public User createNewUser(User user) {
 
-        return newUserRepository.save(newUser);
+        return newUserRepository.save(user);
     }
 
     @Override
-    public List<NewUser> readUser() {
+    public List<User> readUser() {
 //        return newUserRepository.findAll();
         return null;
     }
 
     @Override
-    public NewUser updateUser(NewUser newUser) {
-        Optional<NewUser> newUserDb = this.newUserRepository.findById(newUser.getUser_id());
+    public User updateUser(User user) {
+        Optional<User> newUserDb = this.newUserRepository.findById(user.getUser_id());
 
 //        if (newUserDb.isPresent()) {
-            NewUser newUserUpdate = newUserDb.get();
-            newUserUpdate.setUser_id(newUser.getUser_id());
-            newUserUpdate.setUser_name(newUser.getUser_name());
-            newUserUpdate.setLast_name(newUser.getLast_name());
-            newUserUpdate.setAddress(newUser.getAddress());
-            newUserUpdate.setContact_number(newUser.getContact_number());
-            newUserRepository.save(newUserUpdate);
-            return newUserUpdate;
+            User userUpdate = newUserDb.get();
+            userUpdate.setUser_id(user.getUser_id());
+            userUpdate.setUser_name(user.getUser_name());
+            userUpdate.setLast_name(user.getLast_name());
+            userUpdate.setAddress(user.getAddress());
+            userUpdate.setContact_number(user.getContact_number());
+            newUserRepository.save(userUpdate);
+            return userUpdate;
 //        }
 //        else {
 //            throw new ResourceNotFoundException("Record not found with id : " + newUser.getUser_id());
@@ -44,24 +44,24 @@ public class NewUserServiceImp implements NewUserService {
     }
 
     @Override
-    public List < NewUser > getAllUsers() {
-        return (List<NewUser>) this.newUserRepository.findAll();
+    public List <User> getAllUsers() {
+        return (List<User>) this.newUserRepository.findAll();
     }
 
     @Override
     public  List<String > getAllEmails() {
         List <String> emailList = new ArrayList<String>();
-        List <NewUser> users=this.getAllUsers();
-        for(NewUser newUser : users){
-            emailList.add(newUser.getEmail());
+        List <User> users=this.getAllUsers();
+        for(User user : users){
+            emailList.add(user.getEmail());
         }
         return emailList;
     }
 
     @Override
-    public NewUser getUserById(int newUserId) {
+    public User getUserById(int newUserId) {
 
-        Optional < NewUser > newUserDb = this.newUserRepository.findById(newUserId);
+        Optional <User> newUserDb = this.newUserRepository.findById(newUserId);
 
 //        if (newUserDb.isPresent()) {
             return newUserDb.get();
@@ -71,7 +71,7 @@ public class NewUserServiceImp implements NewUserService {
     }
     @Override
     public void deleteUser(int newUserId) {
-        Optional < NewUser > newUserDb = this.newUserRepository.findById(newUserId);
+        Optional <User> newUserDb = this.newUserRepository.findById(newUserId);
 
 //        if (productDb.isPresent()) {
             this.newUserRepository.delete(newUserDb.get());

@@ -1,7 +1,7 @@
 package com.example.CarParkManagementSystem.controller;
 
 import com.example.CarParkManagementSystem.dao.NewUserRepository;
-import com.example.CarParkManagementSystem.model.NewUser;
+import com.example.CarParkManagementSystem.entity.User;
 import com.example.CarParkManagementSystem.service.NewUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,14 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
-import java.util.Random;
 
 @Controller
 @Document(collection = "user_table")
 public class SignUpController {
-    public NewUser newUser;
+    public User user;
     public AutoIdGenerator autoIdGenerator;
 
     @Autowired
@@ -29,18 +27,18 @@ public class SignUpController {
 
     @GetMapping("/signUp")
     public String signUpForm(Model model) {
-        newUser=new NewUser();
-        model.addAttribute("signUpTag", newUser);
+        user =new User();
+        model.addAttribute("signUpTag", user);
         return "signUp";
     }
 
     @PostMapping("/signUpTag")
 //    public ResponseEntity  createNewUser(@ModelAttribute NewUser newUser,Model model) {
-        public String  createNewUser(@ModelAttribute NewUser newUser,Model model) {
+        public String  createNewUser(@ModelAttribute User user, Model model) {
 
         List<String> emailList = newUserService.getAllEmails();
 
-        String compareEmail = newUser.getEmail();
+        String compareEmail = user.getEmail();
         if (emailList.contains(compareEmail)) {
             String failureMessage = "Already has the email address: " + compareEmail;
             model.addAttribute("failureMessage", failureMessage);
@@ -48,11 +46,11 @@ public class SignUpController {
         } else {
             String successMessage = "Successfully Sign Up";
             model.addAttribute("successMessage", successMessage);
-            newUser.setUser_id(AutoIdGenerator.generateUserId(newUser));
-            newUserService.createNewUser(newUser);
+            user.setUser_id(AutoIdGenerator.generateUserId(user));
+            newUserService.createNewUser(user);
         }
 
-        model.addAttribute("user_table",newUser );
+        model.addAttribute("user_table", user);
 //        ResponseEntity.ok().body(this.newUserService.createNewUser(newUser));
         return "signUpResult";
 
@@ -61,9 +59,9 @@ public class SignUpController {
     }
 
     @PutMapping("/user_table/{id}")
-    public ResponseEntity < NewUser > updateProduct(@PathVariable int id, @RequestBody NewUser newUser) {
-        newUser.setUser_id(id);
-        return ResponseEntity.ok().body(this.newUserService.updateUser(newUser));
+    public ResponseEntity <User> updateProduct(@PathVariable int id, @RequestBody User user) {
+        user.setUser_id(id);
+        return ResponseEntity.ok().body(this.newUserService.updateUser(user));
     }
 
     @DeleteMapping("/user_table/{id}")
@@ -73,12 +71,12 @@ public class SignUpController {
     }
 
     @GetMapping("/user_table")
-    public ResponseEntity < List < NewUser >> getAllUsers() {
+    public ResponseEntity < List <User>> getAllUsers() {
         return ResponseEntity.ok().body(newUserService.getAllUsers());
     }
 
     @GetMapping("/user_table/{id}")
-    public ResponseEntity < NewUser > getUserById(@PathVariable int id) {
+    public ResponseEntity <User> getUserById(@PathVariable int id) {
         return ResponseEntity.ok().body(newUserService.getUserById(id));
     }
 
