@@ -75,6 +75,7 @@ public class ParkingSystemController implements IParkingController {
             String email,
             String address,
             String phoneNum,
+            String username,
             String password,
             int userType) {
         User u = new User(
@@ -83,6 +84,7 @@ public class ParkingSystemController implements IParkingController {
                 email,
                 address,
                 phoneNum,
+                username,
                 password,
                 userType);
         iDB.createUser(u);

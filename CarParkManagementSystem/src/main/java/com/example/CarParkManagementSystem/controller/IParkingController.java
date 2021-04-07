@@ -50,6 +50,7 @@ public interface IParkingController {
      * @param email
      * @param address
      * @param phoneNum
+     * @param username
      * @param password
      * @param userType
      * @return
@@ -59,6 +60,7 @@ public interface IParkingController {
                 String email,
                 String address,
                 String phoneNum,
+                String username,
                 String password,
                 int userType);
 

@@ -19,6 +19,7 @@ public class User {
     private String email;
     private String address;
     private String contact_number;
+    private String username;
     private String password;
     private int userType;
 
@@ -28,6 +29,7 @@ public class User {
             String email,
             String address,
             String contact_number,
+            String username,
             String password,
             int userType) {
         this.first_name = first_name;
@@ -35,11 +37,13 @@ public class User {
         this.email = email;
         this.address = address;
         this.contact_number = contact_number;
+        this.username = username;
         this.password = password;
         this.userType = userType;
     }
 
     public User() {
+        userType = 0;
     }
 
     public int getUserType() {
@@ -99,6 +103,13 @@ public class User {
 
     public void setContact_number(String contact_number) {
         this.contact_number = contact_number;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

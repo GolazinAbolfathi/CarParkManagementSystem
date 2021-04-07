@@ -15,7 +15,7 @@ import java.util.List;
 
 @Controller
 @Document(collection = "user_table")
-public class SignUpController {
+public class SignUpDisplay {
     public User user;
 
     @Autowired
@@ -26,8 +26,7 @@ public class SignUpController {
 
     @GetMapping("/signUp")
     public String signUpForm(Model model) {
-        user =new User();
-        model.addAttribute("signUpTag", user);
+        model.addAttribute("signUpTag", new User());
         return "signUp";
     }
 

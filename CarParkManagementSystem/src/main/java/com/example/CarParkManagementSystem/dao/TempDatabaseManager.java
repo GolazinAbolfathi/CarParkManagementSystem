@@ -12,11 +12,12 @@ public class TempDatabaseManager implements IDatabaseManager {
     public TempDatabaseManager()
     {
         User user = new User(
-                "Bob",
-                "password",
+                "Smatt",
+                "Mithieson",
                 "", "",
                 "",
-                "", 0);
+                "","",
+                0);
         ParkingLot lot = new ParkingLot();
         lot.addParkingStall().parkCar("123456", 5);
         lot.addParkingStall().parkCar("EWA 705", 2);

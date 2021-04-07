@@ -31,7 +31,7 @@
         <input type="text" th:field="*{contact_number}" placeholder="Enter Contact Number" name="contact_number" required>
 
         <label><b>Username</b></label>
-        <input type="text" th:field="*{user_name}" placeholder="Enter Username" name="uname" required>
+        <input type="text" th:field="*{username}" placeholder="Enter Username" name="uname" required>
 
         <label><b>Password</b></label>
         <input type="password" th:field="*{password}" placeholder="Enter Password" name="psw" required>
@@ -40,7 +40,7 @@
 
     <div class="container" style="background-color:#f1f1f1">
         <button type="submit" class="cancelbtn" id="submission">Sign Up</button>
-        <button type="button" class="cancelbtn">Cancel</button>
+        <a class="cancelbtn" th:href="@{/}">Cancel</button>
     </div>
 
 </form>
