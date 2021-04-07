@@ -99,4 +99,9 @@ public class ParkingSystemController implements IParkingController {
             stalls.addAll(l.getParkingStalls());
         return stalls;
     }
+
+    @Override
+    public User getUser(String username, String password) {
+        return null;
+    }
 }

@@ -1,4 +1,4 @@
-package com.example.CarParkManagementSystem.view;
+package com.example.CarParkManagementSystem.controller;
 
 import com.example.CarParkManagementSystem.dao.NewUserRepository;
 import com.example.CarParkManagementSystem.entity.User;
@@ -16,7 +16,9 @@ import java.util.List;
 @Controller
 @Document(collection = "user_table")
 public class SignUpDisplay {
+    public User tempUser;
     public User user;
+//    public AutoIdGenerator autoIdGenerator;
 
     @Autowired
     private NewUserRepository newUserRepository;
@@ -26,7 +28,9 @@ public class SignUpDisplay {
 
     @GetMapping("/signUp")
     public String signUpForm(Model model) {
-        model.addAttribute("signUpTag", new User());
+        tempUser =new User();
+        model.addAttribute("signUpTag", tempUser);
+        user=new User(tempUser.getFirst_name(),tempUser.getLast_name(),tempUser.getEmail(),tempUser.getAddress(),tempUser.getContact_number(),tempUser.getPassword(),tempUser.getUsername(),tempUser.getUser_type());
         return "signUp";
     }
 
@@ -44,7 +48,7 @@ public class SignUpDisplay {
         } else {
             String successMessage = "Successfully Sign Up";
             model.addAttribute("successMessage", successMessage);
-            user.setNextId();
+//            user.setUser_id(AutoIdGenerator.generateUserId(user));
             newUserService.createNewUser(user);
         }
 
@@ -57,13 +61,13 @@ public class SignUpDisplay {
     }
 
     @PutMapping("/user_table/{id}")
-    public ResponseEntity <User> updateProduct(@PathVariable int id, @RequestBody User user) {
-        user.setUserId(id);
+    public ResponseEntity <User> updateProduct(@PathVariable Long id, @RequestBody User user) {
+        user.setUser_id(id);
         return ResponseEntity.ok().body(this.newUserService.updateUser(user));
     }
 
     @DeleteMapping("/user_table/{id}")
-    public HttpStatus deleteUser(@PathVariable int id) {
+    public HttpStatus deleteUser(@PathVariable Long id) {
         this.newUserService.deleteUser(id);
         return HttpStatus.OK;
     }
@@ -74,7 +78,7 @@ public class SignUpDisplay {
     }
 
     @GetMapping("/user_table/{id}")
-    public ResponseEntity <User> getUserById(@PathVariable int id) {
+    public ResponseEntity <User> getUserById(@PathVariable Long id) {
         return ResponseEntity.ok().body(newUserService.getUserById(id));
     }
 

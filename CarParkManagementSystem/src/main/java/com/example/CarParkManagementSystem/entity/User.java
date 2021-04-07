@@ -1,68 +1,66 @@
 package com.example.CarParkManagementSystem.entity;
 
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.SequenceGenerator;
+import java.util.Random;
 
+/**
+ * @author Soheila Hoseini - 300311938
+ * This is the user model
+ */
 //!!!!!!!!!!!!!  add username field
 @Document(collection = "user_table")
 public class User {
-    private static int nextId = 0;
-//    @Id
+    @Id
 //    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LICENSE_SEQ")
-    private int user_id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LICENSE_SEQ")
+    private Long user_id;
     public String first_name;
     private String last_name;
     private String email;
     private String address;
     private String contact_number;
-    private String username;
     private String password;
-    private int userType;
+    //    @Field()
+    private String username;
+    private int user_type;
 
-    public User(
-            String first_name,
-            String last_name,
-            String email,
-            String address,
-            String contact_number,
-            String username,
-            String password,
-            int userType) {
+
+    public User(String first_name, String last_name, String email, String address, String contact_number, String password, String user_name, int user_type) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.email = email;
         this.address = address;
         this.contact_number = contact_number;
-        this.username = username;
         this.password = password;
-        this.userType = userType;
+        this.username = user_name;
+        this.user_type = user_type;
     }
 
     public User() {
-        userType = 0;
     }
 
-    public int getUserType() {
-        return userType;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserType(int userType) {
-        this.userType = userType;
+    public void setUsername(String user_name) {
+        this.username = user_name;
     }
 
-    public int getUserId() {
+    public Long getUser_id() {
         return user_id;
     }
 
-    public void setUserId(int user_id) {
+    public void setUser_id(Long user_id) {
         this.user_id = user_id;
-    }
-    public void setNextId() {
-        user_id = nextId++;
     }
 
     public String getFirst_name() {
@@ -105,13 +103,6 @@ public class User {
         this.contact_number = contact_number;
     }
 
-    public String getUsername() {
-        return username;
-    }
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -119,4 +110,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    public int getUser_type() {
+        return user_type;
+    }
+
+    public void setUser_type(int user_type) {
+        this.user_type = user_type;
+    }
+
 }

@@ -28,7 +28,7 @@ public class TempDatabaseManager implements IDatabaseManager {
     @Override
     public User getUser(int userID) {
         for (User u : users)
-            if (u.getUserId() == userID)
+            if (u.getUser_id() == userID)
                 return u;
         return null;
     }
@@ -37,7 +37,7 @@ public class TempDatabaseManager implements IDatabaseManager {
     public void createUser(User user) {
         // Make sure the user id doesn't conflict
         if (users.size() > 0)
-            user.setUserId(users.get(users.size() - 1).getUserId() + 1);
+            user.setUser_id(users.get(users.size() - 1).getUser_id() + 1);
         users.add(user);
     }
 

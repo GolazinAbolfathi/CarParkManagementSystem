@@ -1,5 +1,7 @@
 package com.example.CarParkManagementSystem.view;
 
+import com.example.CarParkManagementSystem.controller.IParkingController;
+import com.example.CarParkManagementSystem.controller.ParkingSystemController;
 import com.example.CarParkManagementSystem.entity.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,7 @@ public class SignInDisplay {
 
     @PostMapping("/signInTag")
     public String greetingSubmit(@ModelAttribute User user, Model model) {
+        IParkingController iParkingController=new ParkingSystemController();
         model.addAttribute("signInTag", user);
         return "signInResult";
     }
