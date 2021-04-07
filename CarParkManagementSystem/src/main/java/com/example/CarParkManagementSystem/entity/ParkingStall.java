@@ -20,6 +20,13 @@ public class ParkingStall {
         return parkingLot;
     }
 
+    public ParkingPass getParkingPass(int passId) {
+        for (ParkingPass pass : passes)
+            if (pass.getPassId() == passId)
+                return pass;
+        return null;
+    }
+
     public List<ParkingPass> getParkingPasses() {
         return new ArrayList<>(passes);
     }

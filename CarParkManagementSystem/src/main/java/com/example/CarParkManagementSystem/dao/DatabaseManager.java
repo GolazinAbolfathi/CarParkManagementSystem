@@ -15,11 +15,6 @@ public class DatabaseManager implements IDatabaseManager {
     }
 
     @Override
-    public ParkingStall getParkingStall(int stallID) {
-        return null;
-    }
-
-    @Override
     public Invoice getInvoice(int invoiceID) {
         return null;
     }

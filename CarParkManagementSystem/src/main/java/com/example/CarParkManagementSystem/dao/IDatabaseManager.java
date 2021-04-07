@@ -13,8 +13,6 @@ public interface IDatabaseManager {
 
     public ParkingLot getParkingLot(int parkingLotID);
 
-    public ParkingStall getParkingStall(int stallID);
-
     public Invoice getInvoice(int invoiceID);
 
     public void addParkingPass(ParkingPass pass);

@@ -46,7 +46,7 @@ public class SignUpController {
         } else {
             String successMessage = "Successfully Sign Up";
             model.addAttribute("successMessage", successMessage);
-            user.setUser_id(AutoIdGenerator.generateUserId(user));
+            user.setUserId(AutoIdGenerator.generateUserId(user));
             newUserService.createNewUser(user);
         }
 
@@ -60,7 +60,7 @@ public class SignUpController {
 
     @PutMapping("/user_table/{id}")
     public ResponseEntity <User> updateProduct(@PathVariable int id, @RequestBody User user) {
-        user.setUser_id(id);
+        user.setUserId(id);
         return ResponseEntity.ok().body(this.newUserService.updateUser(user));
     }
 

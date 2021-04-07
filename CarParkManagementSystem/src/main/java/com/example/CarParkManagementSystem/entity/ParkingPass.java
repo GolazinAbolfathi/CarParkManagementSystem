@@ -3,6 +3,7 @@ package com.example.CarParkManagementSystem.entity;
 import java.util.Date;
 
 public class ParkingPass {
+    private int passId;
     private final String carPlate;
     private final ParkingStall stall;
     private final Date enterTime;
@@ -15,6 +16,14 @@ public class ParkingPass {
         this.enterTime = enter;
         this.expectedExit = exit;
         this.invoice = null;
+    }
+
+    public int getPassId() {
+        return passId;
+    }
+
+    public void setPassId(int passId) {
+        this.passId = passId;
     }
 
     public ParkingStall getParkingStall () {
