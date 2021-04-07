@@ -2,6 +2,8 @@ package com.example.CarParkManagementSystem.controller;
 
 import com.example.CarParkManagementSystem.entity.*;
 
+import java.util.List;
+
 public interface IParkingController {
     /**
      * Parks a car in a stall
@@ -48,6 +50,7 @@ public interface IParkingController {
      * @param email
      * @param address
      * @param phoneNum
+     * @param username
      * @param password
      * @param userType
      * @return
@@ -56,9 +59,14 @@ public interface IParkingController {
                 String lastName,
                 String email,
                 String address,
-                int phoneNum,
+                String phoneNum,
+                String username,
                 String password,
-                boolean userType);
+                int userType);
 
-
+    /**
+     * Gets a list of all stalls available to the controller
+     * @return A list of stalls
+     */
+    List<ParkingStall> getStallList();
 }

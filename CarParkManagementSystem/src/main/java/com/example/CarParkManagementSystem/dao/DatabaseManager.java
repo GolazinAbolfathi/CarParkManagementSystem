@@ -3,6 +3,8 @@ package com.example.CarParkManagementSystem.dao;
 import com.example.CarParkManagementSystem.entity.User;
 import com.example.CarParkManagementSystem.entity.*;
 
+import java.util.List;
+
 public class DatabaseManager implements IDatabaseManager {
     @Override
     public ParkingPass getParkingPass(int passID) {
@@ -15,7 +17,7 @@ public class DatabaseManager implements IDatabaseManager {
     }
 
     @Override
-    public ParkingStall getParkingStall(int stallID) {
+    public List<ParkingLot> getParkingLots() {
         return null;
     }
 
