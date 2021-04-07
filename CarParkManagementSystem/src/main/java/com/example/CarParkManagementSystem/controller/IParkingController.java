@@ -69,4 +69,8 @@ public interface IParkingController {
      * @return A list of stalls
      */
     List<ParkingStall> getStallList();
+
+    //SignIn
+    User getUser(String username,
+                 String password);
 }

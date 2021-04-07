@@ -1,7 +1,6 @@
 package com.example.CarParkManagementSystem.entity;
 
 
-import com.example.CarParkManagementSystem.controller.AutoIdGenerator;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -30,7 +29,7 @@ public class User {
     private String contact_number;
     private String password;
     //    @Field()
-    private String user_name;
+    private String username;
     private int user_type;
 
 
@@ -41,19 +40,19 @@ public class User {
         this.address = address;
         this.contact_number = contact_number;
         this.password = password;
-        this.user_name = user_name;
+        this.username = user_name;
         this.user_type = user_type;
     }
 
     public User() {
     }
 
-    public String getUser_name() {
-        return user_name;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
+    public void setUsername(String user_name) {
+        this.username = user_name;
     }
 
     public Long getUser_id() {

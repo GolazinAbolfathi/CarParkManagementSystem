@@ -15,10 +15,10 @@ import java.util.List;
 
 @Controller
 @Document(collection = "user_table")
-public class SignUpController {
+public class SignUpDisplay {
     public User tempUser;
     public User user;
-    public AutoIdGenerator autoIdGenerator;
+//    public AutoIdGenerator autoIdGenerator;
 
     @Autowired
     private NewUserRepository newUserRepository;
@@ -30,7 +30,7 @@ public class SignUpController {
     public String signUpForm(Model model) {
         tempUser =new User();
         model.addAttribute("signUpTag", tempUser);
-        user=new User(tempUser.getFirst_name(),tempUser.getLast_name(),tempUser.getEmail(),tempUser.getAddress(),tempUser.getContact_number(),tempUser.getPassword(),tempUser.getUser_name(),tempUser.getUser_type());
+        user=new User(tempUser.getFirst_name(),tempUser.getLast_name(),tempUser.getEmail(),tempUser.getAddress(),tempUser.getContact_number(),tempUser.getPassword(),tempUser.getUsername(),tempUser.getUser_type());
         return "signUp";
     }
 
