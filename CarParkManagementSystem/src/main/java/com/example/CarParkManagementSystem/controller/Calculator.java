@@ -2,10 +2,12 @@ package com.example.CarParkManagementSystem.controller;
 
 import com.example.CarParkManagementSystem.entity.Invoice;
 import com.example.CarParkManagementSystem.entity.ParkingPass;
+import org.springframework.stereotype.Service;
 
 import java.time.Instant;
 import java.util.Date;
 
+@Service
 public class Calculator {
     private final double hourly;
     private final double overtime;

@@ -15,20 +15,19 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@Document(collection = "user_table")
+//@Document(collection = "user_table")
 public class SignUpDisplay {
     public User tempUser;
     public User user;
 
-//    @Autowired
-    private IParkingController iParkingController=new ParkingSystemController();
-
-
     @Autowired
-    private NewUserRepository newUserRepository;
+    private IParkingController iParkingController;
 
-    @Autowired
-    private NewUserService newUserService;
+    //@Autowired
+    //private NewUserRepository newUserRepository;
+
+    //@Autowired
+    //private NewUserService newUserService;
 
     @GetMapping("/signUp")
     public String signUpForm(Model model) {
@@ -51,9 +50,15 @@ public class SignUpDisplay {
 //            model.addAttribute("successMessage", successMessage);
 //            newUserService.createNewUser(user);
 //        }
-        iParkingController.addUser(user.getFirst_name(),user.getLast_name(),user.getEmail(),
-                user.getAddress(),user.getContact_number(),user.getUsername()
-                ,user.getPassword(),user.getUser_type());
+        iParkingController.addUser(
+                user.getFirst_name(),
+                user.getLast_name(),
+                user.getEmail(),
+                user.getAddress(),
+                user.getContact_number(),
+                user.getUsername(),
+                user.getPassword(),
+                user.getUser_type());
         model.addAttribute("user_table", user);
         return "signUpResult";
     }

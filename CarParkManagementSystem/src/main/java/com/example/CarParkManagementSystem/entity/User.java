@@ -17,8 +17,13 @@ import java.util.Random;
 //!!!!!!!!!!!!!  add username field
 @Document(collection = "user_table")
 public class User {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.AUTO)
+    // mongodb managed _id field
+    @Id
+    private String id;
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
+
+    // Is this user_id not needed anymore?
     private Long user_id;
     private String first_name;
     private String last_name;

@@ -6,13 +6,13 @@ import com.example.CarParkManagementSystem.service.NewUserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-@Controller
-@Document(collection = "user_table")
+@Repository
 public class TempDatabaseManager implements IDatabaseManager {
     private final ArrayList<ParkingLot> lots = new ArrayList<>();
     private final ArrayList<User> users = new ArrayList<>();
