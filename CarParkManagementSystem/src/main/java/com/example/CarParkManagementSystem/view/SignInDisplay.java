@@ -21,21 +21,18 @@ public class SignInDisplay {
 
 
     @PostMapping("/signInTag")
-    public String signInSubmit(@ModelAttribute User user, Model model) {
-
-        IParkingController iParkingController=new ParkingSystemController();
-        User tempUser=iParkingController.getUser(user.getUsername(),user.getPassword());
-
-        if (tempUser.getUsername()=="")
-        {
-            model.addAttribute("signUpTag", user);
-            return "signUp";
-        }
-        else
+    public String greetingSubmit(@ModelAttribute User user, Model model) {
+        User actual = controller.getUser(user.getUsername(), user.getPassword());
+        if (actual != null) {
+            // Using signUpResult here because it gives full user information.
+            // Both of these templates will need to be updated eventually,
+            // and determining which template to use in code will also need
+            // to be updated.
+            model.addAttribute("user", actual);
             return "logInHome";
-
-//        model.addAttribute("signInTag", tempUser);
-//        return "signInResult";
+        }
+        model.addAttribute("signUpTag", user);
+        return "signUp";
     }
 
 
