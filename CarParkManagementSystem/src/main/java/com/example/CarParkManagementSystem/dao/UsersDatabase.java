@@ -13,4 +13,7 @@ public interface UsersDatabase extends MongoRepository<User, String> {
 
     // If more complex queries are required, an actual implementation
     // class will need to be created.
+    default String getFirstNameByUsernameAndPassword(String username, String password) {
+        return getUserByUsernameAndPassword(username, password).getFirst_name();
+    }
 }

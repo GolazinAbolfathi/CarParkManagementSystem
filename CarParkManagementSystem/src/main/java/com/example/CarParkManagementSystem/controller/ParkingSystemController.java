@@ -106,6 +106,7 @@ public class ParkingSystemController implements IParkingController {
 
     @Override
     public User getUser(String username, String password) {
+        System.out.println(usersDb.getFirstNameByUsernameAndPassword(username, password));
         return usersDb.getUserByUsernameAndPassword(username, password);
     }
 }
