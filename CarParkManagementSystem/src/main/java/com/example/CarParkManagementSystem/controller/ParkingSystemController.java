@@ -81,6 +81,14 @@ public class ParkingSystemController implements IParkingController {
             String username,
             String password,
             int userType) {
+        // First make sure the user doesn't already exist
+        List<User> ul = usersDb.getUsersByUsernameOrEmail(username, email);
+        if (ul.size() > 0) {
+            User u = ul.get(0);
+            System.out.println("Found " + u.getFirst_name() + " " + u.getLast_name());
+            return null;
+        }
+        System.out.println("No user found");
         User u = new User(
                 firstName,
                 lastName,
