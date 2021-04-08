@@ -17,12 +17,15 @@ import java.util.Random;
 //!!!!!!!!!!!!!  add username field
 @Document(collection = "user_table")
 public class User {
+    // mongodb managed _id field
     @Id
-//    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="LICENSE_SEQ")
+    private String id;
+    public String getId() { return id; }
+    public void setId(String id) { this.id = id; }
+
+    // Is this user_id not needed anymore?
     private Long user_id;
-    public String first_name;
+    private String first_name;
     private String last_name;
     private String email;
     private String address;
@@ -32,6 +35,8 @@ public class User {
     private String username;
     private int user_type;
 
+    public User() {
+    }
 
     public User(String first_name, String last_name, String email, String address, String contact_number, String password, String user_name, int user_type) {
         this.first_name = first_name;
@@ -42,9 +47,6 @@ public class User {
         this.password = password;
         this.username = user_name;
         this.user_type = user_type;
-    }
-
-    public User() {
     }
 
     public String getUsername() {

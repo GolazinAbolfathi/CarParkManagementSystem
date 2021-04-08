@@ -1,28 +1,38 @@
 package com.example.CarParkManagementSystem.dao;
 
 import com.example.CarParkManagementSystem.entity.*;
+import com.example.CarParkManagementSystem.service.NewUserService;
+import com.example.CarParkManagementSystem.service.NewUserServiceImp;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
+@Repository
 public class TempDatabaseManager implements IDatabaseManager {
     private final ArrayList<ParkingLot> lots = new ArrayList<>();
     private final ArrayList<User> users = new ArrayList<>();
+    @Autowired
+    private NewUserService newUserService;
 
     public TempDatabaseManager()
     {
-//        User user = new User(
-//                "Smatt",
-//                "Mithieson",
-//                "", "",
-//                "",
-//                "","",
-//                0);
-//        ParkingLot lot = new ParkingLot();
-//        lot.addParkingStall().parkCar("123456", 5);
-//        lot.addParkingStall().parkCar("EWA 705", 2);
-//        lot.addParkingStall();
-//        addParkingLot(lot);
+        User user = new User(
+                "Smatt",
+                "Mithieson",
+                "", "",
+                "",
+                "","",
+                0);
+        ParkingLot lot = new ParkingLot();
+        lot.addParkingStall().parkCar("123456", 5);
+        lot.addParkingStall().parkCar("EWA 705", 2);
+        lot.addParkingStall();
+        addParkingLot(lot);
 //        createUser(user);
     }
     @Override
@@ -36,9 +46,21 @@ public class TempDatabaseManager implements IDatabaseManager {
     @Override
     public void createUser(User user) {
         // Make sure the user id doesn't conflict
-        if (users.size() > 0)
-            user.setUser_id(users.get(users.size() - 1).getUser_id() + 1);
-        users.add(user);
+//        if (users.size() > 0)
+//            user.setUser_id(users.get(users.size() - 1).getUser_id() + 1);
+//        users.add(user);
+
+        List<String> emailList = newUserService.getAllEmails();
+        String compareEmail = user.getEmail();
+        if (emailList.contains(compareEmail)) {
+            String failureMessage = "Already has the email address: " + compareEmail;
+//            model.addAttribute("failureMessage", failureMessage);
+
+        } else {
+            String successMessage = "Successfully Sign Up";
+//            model.addAttribute("successMessage", successMessage);
+            newUserService.createNewUser(user);
+        }
     }
 
     @Override

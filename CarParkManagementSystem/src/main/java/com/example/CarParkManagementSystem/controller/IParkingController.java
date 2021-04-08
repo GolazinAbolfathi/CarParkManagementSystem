@@ -1,9 +1,11 @@
 package com.example.CarParkManagementSystem.controller;
 
 import com.example.CarParkManagementSystem.entity.*;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface IParkingController {
     /**
      * Parks a car in a stall
