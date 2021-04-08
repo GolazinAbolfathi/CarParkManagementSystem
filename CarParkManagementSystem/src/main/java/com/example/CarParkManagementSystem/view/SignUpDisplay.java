@@ -1,13 +1,10 @@
 package com.example.CarParkManagementSystem.view;
 
 import com.example.CarParkManagementSystem.controller.IParkingController;
-import com.example.CarParkManagementSystem.controller.ParkingSystemController;
 import com.example.CarParkManagementSystem.dao.NewUserRepository;
 import com.example.CarParkManagementSystem.entity.User;
 import com.example.CarParkManagementSystem.service.NewUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -39,16 +36,10 @@ public class SignUpDisplay {
     @PostMapping("/signUpTag")
         public String  createNewUser(@ModelAttribute User user, Model model) {
 
-        List<String> emailList = newUserService.getAllEmails();
-        String compareEmail = user.getEmail();
-        if (emailList.contains(compareEmail)) {
-            String failureMessage = "Already has the email address: " + compareEmail;
-            model.addAttribute("failureMessage", failureMessage);
-
-        } else {
-            String successMessage = "Successfully Sign Up";
-            model.addAttribute("successMessage", successMessage);
-            newUserService.createNewUser(user);
+        User actual = iParkingController.getUser(user.getUsername(), user.getPassword());
+        if (actual != null) {
+//            model.addAttribute("failureMessage", failureMessage);
+            return "signUp";
         }
         iParkingController.addUser(
                 user.getFirst_name(),
