@@ -16,20 +16,33 @@ body,html
 }
 
 #wrapper1 {
-    margin-left: 15%;
     background-color:white;
-    margin-right:15%;
-    margin-bottom:0;
+    margin-right:auto;
+    margin-left:auto;
     height:100%;
+    width:70%;
+}
+.title
+{
+    font-family:"Broadway";
+    color:#65132E;
+    text-align: center;
+    margin-top:10px;
+        margin-right:auto;
+        margin-left:auto;
 }
 .anchor{
-   font-size:32px;
-   font-family:"Comic Sans MS";
-   border: 1px outset blue;
-   background-color: lightBlue;
+   font-family:"Broadway";
+   font-size: 30px;
    height:200px;
    width:500px;
    cursor:pointer;
+   color:#65132E;
+   text-decoration: none;
+   text-align: center;
+   padding:5;
+       margin-right:auto;
+       margin-left:auto;
 }
 table{
 	margin-left:10%;
@@ -37,7 +50,7 @@ table{
     width: 80%;
 }
 .anchor:hover{
-   background-color: blue;
+   background-color: #63CEBE;
    color:white;
 }
 #nav{
@@ -64,4 +77,9 @@ table, th, td{
 .red{
 	color:white;
 	background-color:red;
+}
+.cancelbtn
+{
+    padding:5px;
+    margin:10px;
 }
