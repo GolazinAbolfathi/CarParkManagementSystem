@@ -24,7 +24,7 @@ public class SignInDisplay {
 
 
     @PostMapping("/signInTag")
-    public String greetingSubmit(@ModelAttribute User user, Model model) {
+    public String signInSubmit(@ModelAttribute User user, Model model) {
         User actual = controller.getUser(user.getUsername(), user.getPassword());
         if (actual != null) {
             // Using signUpResult here because it gives full user information.
