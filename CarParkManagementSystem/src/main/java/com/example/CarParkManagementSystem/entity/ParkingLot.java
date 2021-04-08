@@ -1,6 +1,7 @@
 package com.example.CarParkManagementSystem.entity;
 
 import com.example.CarParkManagementSystem.controller.Calculator;
+import com.example.CarParkManagementSystem.dao.DatabaseManager;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,15 +9,29 @@ import java.util.List;
 
 public class ParkingLot {
     private static int nextId = 0;
-    private final int lotId;
-    private final List<ParkingStall> stalls;
+    private int lotId;
+    private List<ParkingStall> stalls;
 
-    public ParkingLot() { this(nextId++); }
+    public static int getNextId() {
+		return nextId;
+	}
+	public static void setNextId(int nextId) {
+		ParkingLot.nextId = nextId;
+	}
+	public List<ParkingStall> getStalls() {
+		return stalls;
+	}
+	public void setStalls(List<ParkingStall> stalls) {
+		this.stalls = stalls;
+	}
+	public ParkingLot() { this(nextId++); }
     public ParkingLot(int lotId) {
         this.lotId = lotId;
         stalls = new ArrayList<>();
     }
-
+    public void setLotId(int id) {
+    	this.lotId = id;
+    }
     public int getLotId() {
         return lotId;
     }
@@ -26,7 +41,9 @@ public class ParkingLot {
     }
 
     public List<ParkingStall> getParkingStalls() {
-        return new ArrayList<>(stalls);
+        //return new ArrayList<>(stalls);
+    	DatabaseManager dbm = new DatabaseManager();
+    return dbm.getStalls();
     }
 
     public ParkingStall getParkingStall(int stallNumber) {

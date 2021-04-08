@@ -64,12 +64,19 @@ public class DatabaseManager implements IDatabaseManager {
 			return null;
 		}
 	}
-
+	public List<ParkingStall> getStalls() {
+		initializeDatabase();
+		try {
+			return mongoOperations.findAll(ParkingStall.class);
+		} catch (Exception e) {
+			return null;
+		}
+	}
 	@Override
 	public void createUser(User user) {
 		initializeDatabase();
 		try {
-			mongoOperations.insert(user);
+			mongoOperations.save(user);
 
 		} catch (Exception e) {
 		}
@@ -78,7 +85,7 @@ public class DatabaseManager implements IDatabaseManager {
 	public void addParkingPass(ParkingPass pass) {
 		initializeDatabase();
 		try {
-			mongoOperations.insert(pass);
+			mongoOperations.save(pass);
 
 		} catch (Exception e) {
 		}
@@ -88,7 +95,7 @@ public class DatabaseManager implements IDatabaseManager {
 	public void addParkingStall(ParkingStall stall) {
 		initializeDatabase();
 		try {
-			mongoOperations.insert(stall);
+			mongoOperations.save(stall);
 		} catch (Exception e) {
 		}
 	}
@@ -97,7 +104,7 @@ public class DatabaseManager implements IDatabaseManager {
 	public void addParkingLot(ParkingLot lot) {
 		initializeDatabase();
 		try {
-			mongoOperations.insert(lot);
+			mongoOperations.save(lot);
 		} catch (Exception e) {
 		}
 	}
@@ -106,38 +113,24 @@ public class DatabaseManager implements IDatabaseManager {
 	public void addInvoice(Invoice invoice) {
 		initializeDatabase();
 		try {
-			mongoOperations.insert(invoice);
+			mongoOperations.save(invoice);
 		} catch (Exception e) {
 		}
 	}
 
 	public void initializeDatabase() {
-		if (mongoOperations.collectionExists(ParkingLot.class)) {
-			mongoOperations.dropCollection(ParkingLot.class);
-			mongoOperations.dropCollection(ParkingStall.class);
-			ParkingLot pl = new ParkingLot(1);
-				pl.addParkingStall();
-				pl.addParkingStall();
-				pl.addParkingStall();
-				pl.addParkingStall();
-				pl.addParkingStall();
-				pl.addParkingStall();
-				pl.addParkingStall();
-				pl.addParkingStall();
-				pl.addParkingStall();
-				pl.addParkingStall();
-				pl.addParkingStall();
-				pl.addParkingStall();
-			try {
-				mongoOperations.insert(pl);
-				List<ParkingStall> lps = pl.getParkingStalls();
-				for (int x = 0; x<pl.getStallCount(); x++) {
-					mongoOperations.insert(lps.get(x));
-					System.out.println(lps.get(x).getStallNumber());
-				}
-			} catch (Exception e) {
-				// do nothing
-			}
+		mongoOperations.dropCollection("parkingStall");
+		mongoOperations.dropCollection("parkingLot");
+		if(!mongoOperations.collectionExists("parkingStall")) {
+		ParkingLot pl = new ParkingLot(1);
+		ParkingStall temp = new ParkingStall(pl);
+		mongoOperations.save(pl);
+		for(int x = 1; x<11; x++) {
+			mongoOperations.save(temp);
+			temp = new ParkingStall(pl);
+			temp.setStallNumber(x+1);
+		}
+
+		}
 		}
 	}
-}

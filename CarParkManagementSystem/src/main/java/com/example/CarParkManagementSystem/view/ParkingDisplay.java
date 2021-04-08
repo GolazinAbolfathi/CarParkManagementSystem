@@ -27,14 +27,13 @@ public class ParkingDisplay {
     public String homePage(Model model) {
     	controller = new ParkingSystemController();
 		List<ParkingStall> stallItems = controller.getStallList();
-		if (stallItems.isEmpty()) {
+		/*if (stallItems.isEmpty()) {
 			ParkingLot temp = new ParkingLot();
 			ParkingStall s = temp.addParkingStall();
 			s.parkCar("12345", 3);
 			stallItems.add(s);
 			stallItems.add(temp.addParkingStall());
-		}
-
+		}*/
 		System.out.println(stallItems.size());
 		for (ParkingStall s : stallItems)
 			System.out.println(s);

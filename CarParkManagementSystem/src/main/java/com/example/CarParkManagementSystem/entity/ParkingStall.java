@@ -6,9 +6,25 @@ import java.util.Date;
 import java.util.List;
 
 public class ParkingStall {
-    private final ParkingLot parkingLot;
-    private final int stallNumber;
-    private final ArrayList<ParkingPass> passes;
+    private ParkingLot parkingLot;
+    private int stallNumber;
+    public ArrayList<ParkingPass> getPasses() {
+		return passes;
+	}
+
+	public void setPasses(ArrayList<ParkingPass> passes) {
+		this.passes = passes;
+	}
+
+	public void setParkingLot(ParkingLot parkingLot) {
+		this.parkingLot = parkingLot;
+	}
+
+	public void setStallNumber(int stallNumber) {
+		this.stallNumber = stallNumber;
+	}
+
+	private ArrayList<ParkingPass> passes;
 
     public ParkingStall(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;
