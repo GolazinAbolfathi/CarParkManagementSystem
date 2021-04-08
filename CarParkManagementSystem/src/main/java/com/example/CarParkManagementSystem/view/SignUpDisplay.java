@@ -23,11 +23,11 @@ public class SignUpDisplay {
     @Autowired
     private IParkingController iParkingController;
 
-    //@Autowired
-    //private NewUserRepository newUserRepository;
+    @Autowired
+    private NewUserRepository newUserRepository;
 
-    //@Autowired
-    //private NewUserService newUserService;
+    @Autowired
+    private NewUserService newUserService;
 
     @GetMapping("/signUp")
     public String signUpForm(Model model) {
@@ -39,17 +39,17 @@ public class SignUpDisplay {
     @PostMapping("/signUpTag")
         public String  createNewUser(@ModelAttribute User user, Model model) {
 
-//        List<String> emailList = newUserService.getAllEmails();
-//        String compareEmail = user.getEmail();
-//        if (emailList.contains(compareEmail)) {
-//            String failureMessage = "Already has the email address: " + compareEmail;
-//            model.addAttribute("failureMessage", failureMessage);
-//
-//        } else {
-//            String successMessage = "Successfully Sign Up";
-//            model.addAttribute("successMessage", successMessage);
-//            newUserService.createNewUser(user);
-//        }
+        List<String> emailList = newUserService.getAllEmails();
+        String compareEmail = user.getEmail();
+        if (emailList.contains(compareEmail)) {
+            String failureMessage = "Already has the email address: " + compareEmail;
+            model.addAttribute("failureMessage", failureMessage);
+
+        } else {
+            String successMessage = "Successfully Sign Up";
+            model.addAttribute("successMessage", successMessage);
+            newUserService.createNewUser(user);
+        }
         iParkingController.addUser(
                 user.getFirst_name(),
                 user.getLast_name(),
