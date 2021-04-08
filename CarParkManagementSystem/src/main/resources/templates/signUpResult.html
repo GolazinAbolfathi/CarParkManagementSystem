@@ -3,19 +3,50 @@
 <head>
     <title>Getting Started: Handling Form Submission</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/css/static/home.css}" type="text/css">
+    <link rel="stylesheet" th:href="@{/css/signIn.css}" type="text/css">
+    <script type="text/javascript" th:src="@{/js/static/home.js}"></script>
 </head>
 <body>
-<h1>Welcome!</h1>
-<p th:text="'User Name: ' + ${user.first_name}" />
-<p th:text="'Last Name: ' + ${user.last_name}" />
-<p th:text="'Email: ' + ${user.email}" />
-<p th:text="'Address: ' + ${user.address}" />
-<p th:text="'Contact Number: ' + ${user.contact_number}" />
-<p th:text="'User name: ' + ${user.username}" />
-<p th:text="'Password: ' + ${user.password}" />
+<!--<li><a th:href="@{/signIn}" class="anchor"> LOGIN IN </a></li>-->
 
-<a th:href="@{/}">Home Page</a>
+<!--<form th:action="@{/signInTag}" th:object="${signInTag}" action="#" method="post">-->
+    <!--<form th:action="@{/user_table}" th:object="${newUser}" method="post">-->
 
-</form>
+    <div class="imgcontainer">
+        <h1>Registration is successful!</h1>
+        <img src="/img/img_avatar.png" alt="Avatar" class="avatar">
+    </div>
+    <div class="container">
+        <label><b>first_name</b></label>
+        <p th:text="'User Name: ' + ${user.first_name}" />
+
+        <label><b>last_name</b></label>
+        <p th:text="'Last Name: ' + ${user.last_name}" />
+
+        <label><b>email</b></label>
+        <p th:text="'Email: ' + ${user.email}" />
+
+        <label><b>address</b></label>
+        <p th:text="'Address: ' + ${user.address}" />
+
+        <label><b>contact_number</b></label>
+        <p th:text="'Contact Number: ' + ${user.contact_number}" />
+
+        <label><b>Username</b></label>
+        <p th:text="'User name: ' + ${user.username}" />
+
+        <label><b>Password</b></label>
+        <p th:text="'Password: ' + ${user.password}" />
+
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1">
+        <button type="button" class="cancelbtn" id="submission">
+            <a th:href="@{/signIn}" class="anchor"> SIGN IN </a>
+        </button>
+    </div>
+
+<!--</form>-->
 </body>
 </html>
