@@ -2,20 +2,24 @@ package com.example.CarParkManagementSystem.controller;
 
 import com.example.CarParkManagementSystem.dao.*;
 import com.example.CarParkManagementSystem.entity.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+@Service
 public class ParkingSystemController implements IParkingController {
-    DatabaseManager iDB;
-    Calculator calc;
 
-    public ParkingSystemController() {
-        calc = new Calculator();
-        iDB = new DatabaseManager();
-    }
+    @Autowired
+    IDatabaseManager iDB;
+
+    @Autowired
+    UsersDatabase usersDb;
+
+    @Autowired
+    Calculator calc;
 
     @Override
     public ParkingPass parkCar(int lotid, int stallNum, int plannedDuration, String plateNum) {
@@ -87,7 +91,7 @@ public class ParkingSystemController implements IParkingController {
                 username,
                 password,
                 userType);
-        iDB.createUser(u);
+        usersDb.insert(u);
         return u;
     }
 
@@ -102,6 +106,6 @@ public class ParkingSystemController implements IParkingController {
 
     @Override
     public User getUser(String username, String password) {
-        return new User();
+        return usersDb.getUserByUsernameAndPassword(username, password);
     }
 }

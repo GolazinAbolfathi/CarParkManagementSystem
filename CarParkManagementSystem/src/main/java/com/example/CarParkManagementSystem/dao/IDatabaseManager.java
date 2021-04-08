@@ -2,9 +2,11 @@ package com.example.CarParkManagementSystem.dao;
 
 import com.example.CarParkManagementSystem.entity.User;
 import com.example.CarParkManagementSystem.entity.*;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public interface IDatabaseManager {
 
     User getUser(int userID);
