@@ -1,6 +1,5 @@
 package com.example.CarParkManagementSystem.dao;
 
-import com.example.CarParkManagementSystem.entity.User;
 import com.example.CarParkManagementSystem.entity.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -98,6 +97,20 @@ public class DatabaseManager implements IDatabaseManager {
 		try {
 			mongoOperations.insert(invoice);
 		} catch (Exception e) {
+		}
+	}
+	public void initializeDatabase() {
+		ParkingLot pl = new ParkingLot(1);
+		for(int x = 1; x < 50; x++) {
+		pl.addParkingStall();
+		}
+		try {
+			mongoOperations.insert(pl);
+			for(ParkingStall ps : pl.getAvailableStalls()) {
+				mongoOperations.insert(ps);
+			}
+		}catch(Exception e) {
+			//do nothing
 		}
 	}
 }
