@@ -18,11 +18,24 @@ public class SignInDisplay {
         return "signIn";
     }
 
+
+
     @PostMapping("/signInTag")
     public String greetingSubmit(@ModelAttribute User user, Model model) {
+
         IParkingController iParkingController=new ParkingSystemController();
-        model.addAttribute("signInTag", user);
-        return "signInResult";
+        User tempUser=iParkingController.getUser(user.getUsername(),user.getPassword());
+
+        if (tempUser.getUsername()=="")
+        {
+            model.addAttribute("signUpTag", user);
+            return "signUp";
+        }
+        else
+            return "logInHome";
+
+//        model.addAttribute("signInTag", tempUser);
+//        return "signInResult";
     }
 
 

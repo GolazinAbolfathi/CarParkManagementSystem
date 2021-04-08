@@ -1,6 +1,5 @@
 *{
     box-sizing:border-box;
-    border:1px red solid;
 }
 *, html, body {
     margin: 0;
@@ -19,21 +18,18 @@ main
     margin:0;
     width:100%;
 }
+
+#wrapper1 {
+
+}
 .title
 {
     font-family:"Broadway";
     color:rebeccapurple;
 }
-
-#wrapper1 {
-        margin-left:auto;
-        margin-right:auto;
-        width:95%;
-        text-align: center;
-}
 .anchor{
    font-family:"Broadway";
-   font-size: 30px;
+   font-size: 16px;
    border: 1px outset blue;
    background-color: Orange;
    height:200px;
@@ -41,7 +37,6 @@ main
    cursor:pointer;
    color:rebeccapurple;
    text-decoration: none;
-   padding:5;
 }
 .anchor:hover{
    background-color: blue;
@@ -49,7 +44,6 @@ main
 }
 #nav{
         width: 100%;
-        font-size: 14px;
         margin-left: 20px;
         margin-top: 15px;
 }
@@ -61,15 +55,35 @@ nav ul li
     margin-bottom:20px;
 
 }
+
+#centerImg {
+    position:absolute;
+    top:40%;
+    padding: 0;
+    width: 500px;
+    height: 400px;
+    z-index:-1;
+    box-shadow:2px 2px 6px dimgray;
+}
+
 #timeh4 {
+    position: absolute;
+    top: 69%;
+    left: 17%;
     text-align: center;
 }
-#centerImg {
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
 
-    padding: 0;
-    width: 800px;
-    height: 500px;
-    box-shadow:2px 2px 6px dimgray;
-    margin-left:auto;
-    margin-right:auto;
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }
