@@ -12,7 +12,7 @@ import java.util.List;
 @Service
 public class ParkingSystemController implements IParkingController {
 
-    IDatabaseManager iDB = new TempDatabaseManager();
+    IDatabaseManager iDB = new DatabaseManager();
 
     @Autowired
     UsersDatabase usersDb;
