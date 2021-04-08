@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Title</title>
+    <title>Reservation Page</title>
     <link rel="stylesheet" th:href="@{/css/stalls.css}" type="text/css">
 </head>
 <body>
@@ -11,17 +11,17 @@
 
         <h1>Reserve your spot</h1>
     <div class="container">
-        <label>Stall ID</label>
+        <label><b>Stall ID</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" th:value="${number}" name="stallId" readonly>
 <br>
-        <label><b>How long do you want to park?(in minutes)</b></label>
+        <label><b>Duration(min)</b></label>
         <input type="text" placeholder="Enter Time" name="minutesLeft" required>
 <br>
     	<input type="hidden" name="parkedUnit" th:value=1>
     </div>
-
+    <br><br>
     <div>
-        <button type="submit" class="cancelbtn" id="submission">Reserve Now</button>
+        <button type="submit" class="cancelbtn" id="submission">Reserve Now</button>&nbsp;&nbsp;&nbsp;
         <button type="button" class="cancelbtn">Cancel</button>
     </div>
 

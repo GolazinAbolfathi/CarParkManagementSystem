@@ -102,6 +102,6 @@ public class ParkingSystemController implements IParkingController {
 
     @Override
     public User getUser(String username, String password) {
-        return null;
+        return new User();
     }
 }

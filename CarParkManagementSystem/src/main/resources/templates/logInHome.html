@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" th:href="@{/css/logInHome.css}" type="text/css">
+    <script type="text/javascript" th:src="@{/js/home.js}"></script>
+
+</head>
+<body onload="timeFunction()">
+
+<main>
+
+    <div id="wrapper1">
+        <h1> Welcome Dear Driver</h1><br>
+        <nav id="nav">
+            <ul>
+                <li><a th:href="@{/}" class="anchor"> HOME </a></li>
+                <li><a th:href="@{/stalls}" class="anchor">RESERVATIONS</a>
+            </ul>
+        </nav>
+        <img th:src="@{/img/parking_lot4.jpg}" id="centerImg">
+    </div>
+
+    <div class="table">
+        <table>
+            <thead>
+            <tr ><th colspan="3">This is your status</th></tr>
+            <tr>
+                <th>Full Name</th>
+                <th>Stall Number</th>
+                <th>Contact</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>tim</td>
+                <td>doe</td>
+                <td>111</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</main>
+
+</body>
+</html>

@@ -11,19 +11,19 @@ public class TempDatabaseManager implements IDatabaseManager {
 
     public TempDatabaseManager()
     {
-        User user = new User(
-                "Smatt",
-                "Mithieson",
-                "", "",
-                "",
-                "","",
-                0);
-        ParkingLot lot = new ParkingLot();
-        lot.addParkingStall().parkCar("123456", 5);
-        lot.addParkingStall().parkCar("EWA 705", 2);
-        lot.addParkingStall();
-        addParkingLot(lot);
-        createUser(user);
+//        User user = new User(
+//                "Smatt",
+//                "Mithieson",
+//                "", "",
+//                "",
+//                "","",
+//                0);
+//        ParkingLot lot = new ParkingLot();
+//        lot.addParkingStall().parkCar("123456", 5);
+//        lot.addParkingStall().parkCar("EWA 705", 2);
+//        lot.addParkingStall();
+//        addParkingLot(lot);
+//        createUser(user);
     }
     @Override
     public User getUser(int userID) {
