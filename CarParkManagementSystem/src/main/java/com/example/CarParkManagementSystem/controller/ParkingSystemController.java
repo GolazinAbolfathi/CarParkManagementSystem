@@ -9,12 +9,12 @@ import java.util.Date;
 import java.util.List;
 
 public class ParkingSystemController implements IParkingController {
-    IDatabaseManager iDB;
+    DatabaseManager iDB;
     Calculator calc;
 
     public ParkingSystemController() {
         calc = new Calculator();
-        iDB = new TempDatabaseManager();
+        iDB = new DatabaseManager();
     }
 
     @Override
