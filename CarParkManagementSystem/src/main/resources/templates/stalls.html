@@ -29,22 +29,20 @@
         Reserve
         </td>-->
             </thead>
-            <tr th:each="stall : ${stall}">
-                <tr>
-                    <td th:text="${stall.stallNumber}"></td>
-                    <td th:if="${stall.isAvailable()}">
-                        <td class="green">Available</td>
-                        <td style="padding: 0.5ex;">
-                            <a th:href="@{/reservation?stall=} + ${stall.stallNumber}">Reserve</a>
-                        </td>
+            <tr th:each="stall : ${stalls}">
+                <td th:text="${stall.stallNumber}"></td>
+                <td:block th:if="${stall.isAvailable()}">
+                    <td class="green">Available</td>
+                    <td style="padding: 0.5ex;">
+                        <a th:href="@{/reservation?stall=} + ${stall.stallNumber}">Reserve</a>
                     </td>
-                    <td th:unless="${stall.isAvailable()}">
-                        <td class="red">Unavailable</td>
-                        <td style="padding: 0.5ex;"
-                            th:text="${stall.getNextExpectedAvailable().toString()}">
-                        </td>
+                </td:block>
+                <td:block th:unless="${stall.isAvailable()}">
+                    <td class="red">Unavailable</td>
+                    <td style="padding: 0.5ex;"
+                        th:text="${stall.getNextExpectedAvailable().toString()}">
                     </td>
-                </tr>
+                </td:block>
             </tr>
         </table>
     </div>

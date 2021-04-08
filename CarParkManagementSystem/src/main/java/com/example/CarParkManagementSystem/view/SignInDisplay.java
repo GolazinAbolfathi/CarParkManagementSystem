@@ -3,6 +3,7 @@ package com.example.CarParkManagementSystem.view;
 import com.example.CarParkManagementSystem.controller.IParkingController;
 import com.example.CarParkManagementSystem.controller.ParkingSystemController;
 import com.example.CarParkManagementSystem.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class SignInDisplay {
+    @Autowired
+    IParkingController controller;
 
     @GetMapping("/signIn")
     public String signInForm(Model model) {

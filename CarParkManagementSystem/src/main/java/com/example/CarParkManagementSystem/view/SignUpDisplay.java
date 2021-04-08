@@ -59,8 +59,8 @@ public class SignUpDisplay {
                 user.getUsername(),
                 user.getPassword(),
                 user.getUser_type());
-        model.addAttribute("user_table", user);
-        return "logInHome";
+        model.addAttribute("user", user);
+        return "signUpResult";
     }
 
 //    @PutMapping("/user_table/{id}")

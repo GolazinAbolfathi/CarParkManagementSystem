@@ -35,7 +35,11 @@ public class ParkingDisplay {
 			stallItems.add(temp.addParkingStall());
 		}
 
-    	model.addAttribute("stall", stallItems);
+		System.out.println(stallItems.size());
+		for (ParkingStall s : stallItems)
+			System.out.println(s);
+
+    	model.addAttribute("stalls", stallItems);
     			return "stalls";
     } 
     @RequestMapping("/reservation")
