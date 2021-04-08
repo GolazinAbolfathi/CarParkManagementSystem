@@ -20,17 +20,23 @@ main
 }
 
 #wrapper1 {
-    margin-left: 400px;
+
+}
+.title
+{
+    font-family:"Broadway";
+    color:rebeccapurple;
 }
 .anchor{
-   font-size:32px;
-   font-family:"Comic Sans MS";
+   font-family:"Broadway";
+   font-size: 16px;
    border: 1px outset blue;
    background-color: Orange;
    height:200px;
    width:500px;
    cursor:pointer;
    color:rebeccapurple;
+   text-decoration: none;
 }
 .anchor:hover{
    background-color: blue;
@@ -38,7 +44,6 @@ main
 }
 #nav{
         width: 100%;
-        font-size: 14px;
         margin-left: 20px;
         margin-top: 15px;
 }
@@ -50,6 +55,17 @@ nav ul li
     margin-bottom:20px;
 
 }
+
+#centerImg {
+    position:absolute;
+    top:40%;
+    padding: 0;
+    width: 100%;
+    height: 400px;
+    z-index:-1;
+    box-shadow:2px 2px 6px dimgray;
+}
+
 #timeh4 {
     position: absolute;
     top: 69%;
