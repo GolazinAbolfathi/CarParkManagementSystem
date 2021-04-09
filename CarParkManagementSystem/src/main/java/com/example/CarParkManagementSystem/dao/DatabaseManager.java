@@ -15,7 +15,7 @@ import java.util.List;
 public class DatabaseManager implements IDatabaseManager {
 
 	MongoClient mc = MongoClients.create();
-	MongoTemplate mt = new MongoTemplate(mc, "database");
+	MongoTemplate mt = new MongoTemplate(mc, "CarParking");
 	MongoOperations mongoOperations = mt;
 
 	@Override
