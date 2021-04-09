@@ -1,14 +1,17 @@
 package com.example.CarParkManagementSystem.entity;
 
+import org.springframework.data.annotation.Transient;
+
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class ParkingStall {
+    @Transient
     private ParkingLot parkingLot;
     private int stallNumber;
-    public ArrayList<ParkingPass> getPasses() {
+    public List<ParkingPass> getPasses() {
 		return passes;
 	}
 
@@ -24,7 +27,10 @@ public class ParkingStall {
 		this.stallNumber = stallNumber;
 	}
 
-	private ArrayList<ParkingPass> passes;
+	private List<ParkingPass> passes;
+
+    public ParkingStall() {
+    }
 
     public ParkingStall(ParkingLot parkingLot) {
         this.parkingLot = parkingLot;

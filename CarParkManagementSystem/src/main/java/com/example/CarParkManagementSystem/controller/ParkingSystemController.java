@@ -104,10 +104,9 @@ public class ParkingSystemController implements IParkingController {
 
     @Override
     public List<ParkingStall> getStallList() {
-        var lots = iDB.getParkingLots();
+        ((DatabaseManager)iDB).initializeDatabase();
         ArrayList<ParkingStall> stalls = new ArrayList<>();
-        for (var l : lots)
-            stalls.addAll(l.getParkingStalls());
+        iDB.getParkingLots().forEach(lot -> stalls.addAll(lot.getParkingStalls()));
         return stalls;
     }
 

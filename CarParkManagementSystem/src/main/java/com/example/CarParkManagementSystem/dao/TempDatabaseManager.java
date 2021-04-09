@@ -15,9 +15,6 @@ import java.util.List;
 @Repository
 public class TempDatabaseManager implements IDatabaseManager {
     private final ArrayList<ParkingLot> lots = new ArrayList<>();
-    private final ArrayList<User> users = new ArrayList<>();
-    @Autowired
-    private NewUserService newUserService;
 
     public TempDatabaseManager()
     {
@@ -33,34 +30,6 @@ public class TempDatabaseManager implements IDatabaseManager {
         lot.addParkingStall().parkCar("EWA 705", 2);
         lot.addParkingStall();
         addParkingLot(lot);
-//        createUser(user);
-    }
-    @Override
-    public User getUser(int userID) {
-        for (User u : users)
-            if (u.getUser_id() == userID)
-                return u;
-        return null;
-    }
-
-    @Override
-    public void createUser(User user) {
-        // Make sure the user id doesn't conflict
-//        if (users.size() > 0)
-//            user.setUser_id(users.get(users.size() - 1).getUser_id() + 1);
-//        users.add(user);
-
-        List<String> emailList = newUserService.getAllEmails();
-        String compareEmail = user.getEmail();
-        if (emailList.contains(compareEmail)) {
-            String failureMessage = "Already has the email address: " + compareEmail;
-//            model.addAttribute("failureMessage", failureMessage);
-
-        } else {
-            String successMessage = "Successfully Sign Up";
-//            model.addAttribute("successMessage", successMessage);
-            newUserService.createNewUser(user);
-        }
     }
 
     @Override

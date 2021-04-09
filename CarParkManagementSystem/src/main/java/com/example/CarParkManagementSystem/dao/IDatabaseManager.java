@@ -8,11 +8,6 @@ import java.util.List;
 
 @Repository
 public interface IDatabaseManager {
-
-    User getUser(int userID);
-
-    void createUser(User user);
-    
     ParkingPass getParkingPass(int passID);
 
     ParkingLot getParkingLot(int parkingLotID);
