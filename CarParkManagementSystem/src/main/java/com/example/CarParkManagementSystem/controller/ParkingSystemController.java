@@ -17,23 +17,14 @@ public class ParkingSystemController implements IParkingController {
     @Autowired
     UsersDatabase usersDb;
 
-    @Autowired
-    Calculator calc;
+    Calculator calc = new Calculator();
 
     @Override
     public ParkingPass parkCar(int lotid, int stallNum, int plannedDuration, String plateNum) {
-        Date startTime = calc.getCurrentTime();
-        Date exitTime = Date.from(
-            startTime.toInstant().plusSeconds(plannedDuration * 60L * 60)
-        );
         ParkingLot lot = iDB.getParkingLot(lotid);
-        ParkingPass pass = new ParkingPass(
-            plateNum,
-            lot.getParkingStall(stallNum),
-            startTime,
-            exitTime
-        );
-        iDB.addParkingPass(pass);
+        ParkingStall stall = lot.getParkingStall(stallNum);
+        ParkingPass pass = stall.parkCar(plateNum, plannedDuration);
+        iDB.saveParkingLot(lot);
         return pass;
     }
 

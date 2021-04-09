@@ -12,12 +12,12 @@
         <h1>Reserve your spot</h1>
     <div class="container">
         <label><b>Stall ID</b></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="text" th:value="${number}" name="stallId" readonly>
+        <input type="text" th:value="${stallno}" name="stallId" readonly>
 <br>
         <label><b>Duration(min)</b></label>
         <input type="text" placeholder="Enter Time" name="minutesLeft" required>
 <br>
-    	<input type="hidden" name="parkedUnit" th:value=1>
+    	<input type="hidden" name="lotid" th:value="${lotno}">
     </div>
     <br><br>
     <div>

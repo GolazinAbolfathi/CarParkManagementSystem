@@ -37,9 +37,9 @@ public class DatabaseManager implements IDatabaseManager {
 	@Override
 	public ParkingLot getParkingLot(int parkingLotID) {
 		try {
-			return mongoOperations.findOne(new Query(Criteria.where("lotId").is(parkingLotID)), ParkingLot.class);
-
+			return mongoOperations.findOne(new Query(Criteria.where("lotNumber").is(parkingLotID)), ParkingLot.class);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -92,6 +92,11 @@ public class DatabaseManager implements IDatabaseManager {
 	}
 
 	@Override
+	public void saveParkingLot(ParkingLot lot) {
+		mongoOperations.save(lot);
+	}
+
+	@Override
 	public void addInvoice(Invoice invoice) {
 		try {
 			mongoOperations.save(invoice);
@@ -100,7 +105,7 @@ public class DatabaseManager implements IDatabaseManager {
 	}
 
 	public void initializeDatabase() {
-		mongoOperations.dropCollection("lots");
+		//mongoOperations.dropCollection("lots");
 		if(!mongoOperations.collectionExists("lots")) {
 			ParkingLot pl = new ParkingLot();
 			for (int x = 0; x < 10; x++)

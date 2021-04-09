@@ -22,5 +22,7 @@ public interface IDatabaseManager {
 
     void addParkingLot(ParkingLot lot);
 
+    void saveParkingLot(ParkingLot lot);
+
     void addInvoice(Invoice invoice);
 }

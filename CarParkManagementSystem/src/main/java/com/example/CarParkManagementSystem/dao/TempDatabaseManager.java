@@ -1,11 +1,6 @@
 package com.example.CarParkManagementSystem.dao;
 
 import com.example.CarParkManagementSystem.entity.*;
-import com.example.CarParkManagementSystem.service.NewUserService;
-import com.example.CarParkManagementSystem.service.NewUserServiceImp;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -46,7 +41,7 @@ public class TempDatabaseManager implements IDatabaseManager {
     @Override
     public ParkingLot getParkingLot(int parkingLotID) {
         for (var lot : lots)
-            if (lot.getLotId() == parkingLotID)
+            if (lot.getLotNumber() == parkingLotID)
                 return lot;
         return null;
     }
@@ -66,22 +61,7 @@ public class TempDatabaseManager implements IDatabaseManager {
 
     @Override
     public void addParkingPass(ParkingPass pass) {
-        // Make sure the parking lot has already been added
-        ParkingLot lot = getParkingLot(
-                pass.getParkingStall().getParkingLot().getLotId()
-        );
-        if (lot == null) {
-            lot = pass.getParkingStall().getParkingLot();
-            addParkingLot(lot);
-        }
-        // Make sure the parking stall has already been added
-        ParkingStall stall = lot.getParkingStall(pass.getParkingStall().getStallNumber());
-        if (stall == null) {
-            stall = pass.getParkingStall();
-            addParkingStall(stall);
-        }
 
-        // If the pass isn't added by now you fucked up
     }
 
     @Override
@@ -92,6 +72,11 @@ public class TempDatabaseManager implements IDatabaseManager {
     @Override
     public void addParkingLot(ParkingLot lot) {
         lots.add(lot);
+    }
+
+    @Override
+    public void saveParkingLot(ParkingLot lot) {
+
     }
 
     @Override

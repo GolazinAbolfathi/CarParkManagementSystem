@@ -1,7 +1,5 @@
 package com.example.CarParkManagementSystem.entity;
 
-import com.example.CarParkManagementSystem.controller.Calculator;
-
 import java.util.Date;
 
 public class Invoice {

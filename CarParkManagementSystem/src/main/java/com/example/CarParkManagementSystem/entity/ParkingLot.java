@@ -1,7 +1,5 @@
 package com.example.CarParkManagementSystem.entity;
 
-import com.example.CarParkManagementSystem.controller.Calculator;
-import com.example.CarParkManagementSystem.dao.DatabaseManager;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -19,9 +17,12 @@ public class ParkingLot {
     public String getId() { return id; }
     @Transient
     private static int nextId = 0;
-    @Transient
-    private int lotId;
+    private int lotNumber;
     private List<ParkingStall> stalls;
+    public void setStalls(List<ParkingStall> stalls) {
+        this.stalls = stalls;
+        this.stalls.forEach(stall -> stall.setParkingLot(lotNumber));
+    }
 
     public static int getNextId() {
 		return nextId;
@@ -31,14 +32,14 @@ public class ParkingLot {
 	}
 	public ParkingLot() { this(nextId++); }
     public ParkingLot(int lotId) {
-        this.lotId = lotId;
+        this.lotNumber = lotId;
         stalls = new ArrayList<>();
     }
-    public void setLotId(int id) {
-    	this.lotId = id;
+    public void setLotNumber(int id) {
+    	this.lotNumber = id;
     }
-    public int getLotId() {
-        return lotId;
+    public int getLotNumber() {
+        return lotNumber;
     }
 
     public int getStallCount() {

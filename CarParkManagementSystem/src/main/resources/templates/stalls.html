@@ -34,7 +34,9 @@
                 <td:block th:if="${stall.isAvailable()}">
                     <td class="green">Available</td>
                     <td style="padding: 0.5ex;">
-                        <a th:href="@{/reservation?stall=} + ${stall.stallNumber}">Reserve</a>
+                        <a th:href="@{/reservation?stall=} + ${stall.stallNumber} + @{&lot=} + ${stall.parkingLot}">
+                            Reserve
+                        </a>
                     </td>
                 </td:block>
                 <td:block th:unless="${stall.isAvailable()}">

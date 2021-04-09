@@ -1,15 +1,12 @@
 package com.example.CarParkManagementSystem.entity;
 
-import org.springframework.data.annotation.Transient;
-
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class ParkingStall {
-    @Transient
-    private ParkingLot parkingLot;
+    private int parkingLot;
     private int stallNumber;
     public List<ParkingPass> getPasses() {
 		return passes;
@@ -19,7 +16,7 @@ public class ParkingStall {
 		this.passes = passes;
 	}
 
-	public void setParkingLot(ParkingLot parkingLot) {
+	public void setParkingLot(int parkingLot) {
 		this.parkingLot = parkingLot;
 	}
 
@@ -33,12 +30,12 @@ public class ParkingStall {
     }
 
     public ParkingStall(ParkingLot parkingLot) {
-        this.parkingLot = parkingLot;
+        this.parkingLot = parkingLot.getLotNumber();
         this.stallNumber = parkingLot.getStallCount() + 1;
         passes = new ArrayList<>();
     }
 
-    public ParkingLot getParkingLot() {
+    public int getParkingLot() {
         return parkingLot;
     }
 
@@ -92,18 +89,15 @@ public class ParkingStall {
         return Date.from(Instant.now());
     }
 
+    public ParkingPass parkCar(String plate, int minutes) {
+        return parkCar(plate, Date.from(Instant.now().plusSeconds(60L * minutes)));
+    }
+    public ParkingPass parkCar(String plate, Date end) {
+        return parkCar(plate, Date.from(Instant.now()), end);
+    }
     public ParkingPass parkCar(String plate, Date start, Date end) {
         ParkingPass pass = new ParkingPass(plate, this, start, end);
         passes.add(pass);
         return pass;
-    }
-
-    public ParkingPass parkCar(String plate, Date end) {
-        return parkCar(plate, Date.from(Instant.now()), end);
-    }
-
-    public ParkingPass parkCar(String plate, int hours) {
-        Date end = Date.from(Instant.now().plusSeconds(60 * 60L * hours));
-        return parkCar(plate, Date.from(Instant.now()), end);
     }
 }

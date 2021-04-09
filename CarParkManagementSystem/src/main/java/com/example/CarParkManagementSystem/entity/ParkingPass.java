@@ -1,14 +1,19 @@
 package com.example.CarParkManagementSystem.entity;
 
+import org.springframework.data.annotation.Transient;
+
 import java.util.Date;
 
 public class ParkingPass {
     private int passId;
-    private final String carPlate;
-    private final ParkingStall stall;
-    private final Date enterTime;
-    private final Date expectedExit;
+    private String carPlate;
+    @Transient
+    private ParkingStall stall;
+    private Date enterTime;
+    private Date expectedExit;
     private Invoice invoice;
+
+    public ParkingPass() {}
 
     public ParkingPass(String plate, ParkingStall stall, Date enter, Date exit) {
         this.carPlate = plate;
