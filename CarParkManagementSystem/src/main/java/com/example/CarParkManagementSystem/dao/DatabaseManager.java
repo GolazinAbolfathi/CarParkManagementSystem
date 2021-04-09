@@ -15,9 +15,14 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 public class DatabaseManager implements IDatabaseManager {
-	MongoClient mc = MongoClients.create();
-	MongoTemplate mt = new MongoTemplate(mc, "CarParking");
-	MongoOperations mongoOperations = mt;
+	private final MongoOperations mongoOperations;
+
+	public DatabaseManager() {
+		MongoClient mc = MongoClients.create();
+		// MongoTemplate mt;
+		mongoOperations = new MongoTemplate(mc, "CarParking");
+		initializeDatabase();
+	}
 
 	@Override
 	public ParkingPass getParkingPass(int passID) {
@@ -41,8 +46,10 @@ public class DatabaseManager implements IDatabaseManager {
 
 	@Override
 	public List<ParkingLot> getParkingLots() {
-		return mongoOperations.findAll(ParkingLot.class);
-
+		System.out.println("Looking for all parking lots");
+		var lots = mongoOperations.findAll(ParkingLot.class);
+		System.out.printf("Found %d lots%n", lots.size());
+		return lots;
 	}
 
 	@Override

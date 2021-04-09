@@ -46,9 +46,7 @@ public class ParkingLot {
     }
 
     public List<ParkingStall> getParkingStalls() {
-        //return new ArrayList<>(stalls);
-    	DatabaseManager dbm = new DatabaseManager();
-    return dbm.getStalls();
+        return new ArrayList<>(stalls);
     }
 
     public ParkingStall getParkingStall(int stallNumber) {
@@ -58,7 +56,7 @@ public class ParkingLot {
         return null;
     }
 
-    public List<ParkingStall> getAvailableStalls(){
+    public List<ParkingStall> getAvailableStalls() {
         ArrayList<ParkingStall> openStall = new ArrayList<>();
         for (ParkingStall ps : stalls)
             if(ps.isAvailable())
